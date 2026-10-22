@@ -33,6 +33,15 @@ import type {
   ReasonItem,
   Solution,
 } from '../types'
+import { companyPageHref, companyPages } from './companyPages'
+
+export const retailServices: { id: string; name: string; description: string; icon: LucideIcon; accent: BrandAccent }[] = [
+  { id: 'snapbilling', name: 'SnapBilling', description: 'Billing, inventory, and day-to-day retail operations.', icon: ReceiptText, accent: 'blue' },
+  { id: 'snaporder', name: 'SnapOrder', description: 'Online ordering and digital shopping experiences.', icon: ShoppingBag, accent: 'green' },
+  { id: 'snappulse', name: 'SnapPulse', description: 'Retail data, reports, and business analytics.', icon: LayoutDashboard, accent: 'red' },
+  { id: 'snapsupply', name: 'SnapSupply', description: 'Digital ordering of supplies for retailers.', icon: Layers, accent: 'yellow' },
+  { id: 'snapconnect', name: 'SnapConnect', description: 'Customer communication and engagement.', icon: Users, accent: 'blue' },
+]
 
 export const navItems: NavItem[] = [
   {
@@ -98,8 +107,30 @@ export const navItems: NavItem[] = [
       { label: 'Public Distribution & Commodities', description: 'PDS, horticulture, and mining workflows.', href: '#/industry/public-distribution', icon: Layers },
     ],
   },
-  { label: 'Platform', href: '#platform' },
-  { label: 'About Us', href: '#why-us' },
+  {
+    label: 'Platform',
+    href: '#platform',
+    items: retailServices.map((service) => ({
+      label: service.name,
+      description: service.description,
+      href: `#service-${service.id}`,
+      icon: service.icon,
+    })),
+  },
+  {
+    label: 'Company',
+    href: companyPageHref('about'),
+    items: [
+      ...companyPages.filter((page) => !page.legal && page.id !== 'about').map((page) => ({
+        label: page.label,
+        description: page.description,
+        href: companyPageHref(page.id),
+        icon: page.icon,
+      })),
+      { label: 'How It Works', description: 'From understanding your workflow to rollout and support.', href: '#how-it-works', icon: Layers },
+      { label: 'Why SnapBizz', description: 'Flexible workflows, integrations, and merchant support.', href: '#why-us', icon: ShieldCheck },
+    ],
+  },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -345,14 +376,6 @@ export const platformFeatureDetails: Record<string, string[]> = {
   'Windows & Android Deployment': ['Windows POS for desktop-based retail workflows', 'Merchant applications on supported Android APOS devices', 'Asset-lite smartphone options based on configuration'],
   'Training & Merchant Support': ['Product training and sales-team enablement', 'Implementation assistance and merchant onboarding', 'Ongoing support as agreed with the partner'],
 }
-
-export const retailServices: { name: string; description: string; icon: LucideIcon; accent: BrandAccent }[] = [
-  { name: 'SnapBilling', description: 'Billing, inventory, and day-to-day retail operations.', icon: ReceiptText, accent: 'blue' },
-  { name: 'SnapOrder', description: 'Online ordering and digital shopping experiences.', icon: ShoppingBag, accent: 'green' },
-  { name: 'SnapPulse', description: 'Retail data, reports, and business analytics.', icon: LayoutDashboard, accent: 'red' },
-  { name: 'SnapSupply', description: 'Digital ordering of supplies for retailers.', icon: Layers, accent: 'yellow' },
-  { name: 'SnapConnect', description: 'Customer communication and engagement.', icon: Users, accent: 'blue' },
-]
 
 export const processSteps: ProcessStep[] = [
   {

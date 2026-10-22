@@ -27,9 +27,9 @@ export function IndustryPage({ id }: { id: string }) {
 
   if (!industry || !detail) {
     return (
-      <section className="flex min-h-[70vh] items-center pt-24">
+      <section className="brand-wash flex min-h-[70vh] items-center pt-24">
         <Container className="flex flex-col items-start gap-4">
-          <h1 className="text-3xl font-bold">Industry not found</h1>
+          <h1 tabIndex={-1} className="text-3xl font-bold">Industry not found</h1>
           <Button href="#industries" variant="secondary">Back to industries</Button>
         </Container>
       </section>
@@ -49,7 +49,7 @@ export function IndustryPage({ id }: { id: string }) {
             <a href="#industries" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
               <ArrowLeft className="h-4 w-4" /> All industries
             </a>
-            <h1 className="text-4xl font-bold sm:text-5xl">{industry.title}</h1>
+            <h1 tabIndex={-1} className="text-4xl font-bold focus:outline-none sm:text-5xl">{industry.title}</h1>
             <p className="text-xl font-medium text-ink-700">{detail.tagline}</p>
             <p className="max-w-xl leading-relaxed text-ink-500">{detail.overview}</p>
             <Button href="#contact">Request a Demo</Button>
@@ -83,7 +83,7 @@ export function IndustryPage({ id }: { id: string }) {
         </Container>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="brand-wash bg-white py-20">
         <Container>
           <h2 className="text-3xl font-bold sm:text-4xl">What you get</h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -111,7 +111,7 @@ export function IndustryPage({ id }: { id: string }) {
         </Container>
       </section>
 
-      <section className="bg-surface-soft py-20">
+      <section className="brand-wash bg-surface-soft py-20">
         <Container>
           <h2 className="text-2xl font-bold sm:text-3xl">Explore other industries</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

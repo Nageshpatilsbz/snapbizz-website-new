@@ -11,12 +11,7 @@ const offerings = [
 
 export function Hero() {
   return (
-    <section id="top" className="relative flex min-h-screen items-center overflow-hidden bg-surface pb-16 pt-28 sm:pb-20 sm:pt-32">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-160 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(66,133,244,0.12),rgba(255,255,255,0))]"
-        aria-hidden="true"
-      />
-
+    <section id="top" className="brand-wash relative isolate flex min-h-screen items-center overflow-hidden bg-surface pb-16 pt-28 sm:pb-20 sm:pt-32">
       <div className="mx-auto grid w-full max-w-[1680px] items-center gap-10 px-6 lg:grid-cols-[0.85fr_1.35fr] lg:gap-6 lg:px-10 xl:px-16">
         <motion.div
           initial={{ y: 16 }}

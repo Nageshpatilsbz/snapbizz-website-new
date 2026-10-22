@@ -34,19 +34,7 @@ export function WhyChooseUs() {
   })
 
   return (
-    <section id="why-us" className="relative isolate flex min-h-screen items-center overflow-hidden bg-surface-soft py-24 sm:py-28">
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,white,transparent_70%)]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -left-32 top-1/3 -z-10 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -right-32 bottom-0 -z-10 h-96 w-96 rounded-full bg-brand-green/5 blur-3xl"
-        aria-hidden="true"
-      />
+    <section id="why-us" className="brand-wash relative isolate flex min-h-screen items-center overflow-hidden bg-surface-soft py-24 sm:py-28">
       <Container className="flex w-full flex-col gap-12 sm:gap-14">
         <SectionHeading
           eyebrow="Why Choose Us"

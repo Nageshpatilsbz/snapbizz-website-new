@@ -36,7 +36,7 @@ export function Platform() {
   }
 
   return (
-    <section id="platform" className="bg-surface py-24 sm:py-28">
+    <section id="platform" className="brand-wash bg-surface py-24 sm:py-28">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           eyebrow="Platform"
@@ -216,7 +216,7 @@ export function Platform() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-line bg-surface-soft p-5 sm:p-8">
+        <div id="connected-services" className="scroll-mt-24 rounded-[2rem] border border-line bg-surface-soft p-5 sm:p-8">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="mb-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">
@@ -233,11 +233,12 @@ export function Platform() {
             {retailServices.map((service, index) => (
               <motion.li
                 key={service.name}
+                id={`service-${service.id}`}
                 initial={reducedMotion ? false : { opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.4, delay: reducedMotion ? 0 : index * 0.06 }}
-                className="h-full"
+                className="h-full scroll-mt-28"
               >
                 <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-5 shadow-[0_2px_6px_rgba(11,14,20,0.025)] transition-[transform,box-shadow,border-color] duration-300 hover:border-brand-blue/25 hover:shadow-[0_14px_28px_-12px_rgba(11,14,20,0.18)] motion-safe:hover:-translate-y-1">
                   <span className={`absolute left-5 top-0 h-0.5 w-8 rounded-b-full transition-[width] duration-300 group-hover:w-14 ${accentBgClass[service.accent]}`} aria-hidden="true" />

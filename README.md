@@ -17,6 +17,26 @@ Pages under your GitHub plan; public repositories can use Pages on GitHub Free.
 
 Run `npm ci`, then `npm run dev`. Run `npm run build` to build the production site.
 
+## Navigation and company content
+
+Company pages open only when selected, using hash routes compatible with GitHub
+Pages: `#/company/about`, `partners`, `careers`, `faq`, `privacy`, and `terms`
+(each uses the same `#/company/` prefix).
+Edit their copy in [companyPages.ts](src/data/companyPages.ts). The Privacy and
+Terms pages are visibly marked as drafts; replace them with approved legal
+content and remove their `draft` flags before publication. Careers has starter
+copy, not live job listings. The enquiry form is still a local demo, not a live
+submission channel.
+
+The header and footer link to individual solution panels, all industry pages,
+and each connected service. Module labels and service IDs are maintained in
+[content.ts](src/data/content.ts). Preserve these IDs when editing copy so
+existing navigation links keep working.
+
+The shared `.brand-wash` rule in [index.css](src/index.css) adds static, muted
+brand-colour gradients to light section backgrounds. Cards, dropdowns, and form
+surfaces retain their own backgrounds for readability.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

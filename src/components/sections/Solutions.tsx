@@ -58,7 +58,7 @@ export function Solutions() {
   }
 
   return (
-    <section id="solutions" className="bg-surface">
+    <section id="solutions" className="brand-wash bg-surface">
       <div className="pt-24 sm:pt-28">
         <Container>
           <SectionHeading
@@ -111,7 +111,7 @@ export function Solutions() {
             key={solution.id}
             id={panelId(solution.id)}
             data-solution={solution.id}
-            className={`flex min-h-screen items-center pb-10 pt-24 min-[1390px]:pt-36 ${
+            className={`brand-wash flex min-h-screen items-center pb-10 pt-24 min-[1390px]:pt-36 ${
               index % 2 === 0 ? 'bg-surface-soft' : 'bg-white'
             }`}
           >

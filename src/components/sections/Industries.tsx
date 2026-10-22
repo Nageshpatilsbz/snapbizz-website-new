@@ -93,7 +93,7 @@ function TiltCard({ industry, index }: { industry: Industry; index: number }) {
 
 export function Industries() {
   return (
-    <section id="industries" className="bg-surface-soft py-24 sm:py-28">
+    <section id="industries" className="brand-wash bg-surface-soft py-24 sm:py-28">
       <Container className="flex flex-col gap-14">
         <SectionHeading
           eyebrow="Industries"

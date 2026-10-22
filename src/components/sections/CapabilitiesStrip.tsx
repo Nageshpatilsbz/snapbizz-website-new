@@ -26,7 +26,7 @@ export function CapabilitiesStrip() {
     <section
       ref={sectionRef}
       aria-label="SnapBizz capabilities"
-      className="relative border-y border-line bg-surface-soft py-10 sm:py-14"
+      className="brand-wash relative border-y border-line bg-surface-soft py-10 sm:py-14"
     >
       <motion.div
         aria-hidden="true"
