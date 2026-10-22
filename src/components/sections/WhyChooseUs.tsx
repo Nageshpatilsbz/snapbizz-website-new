@@ -23,7 +23,7 @@ export function WhyChooseUs() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.4, delay: (index % 3) * 0.08 }}
               whileHover={{ y: -6 }}
-              className={`flex flex-col gap-4 rounded-2xl border border-line p-6 transition-shadow hover:shadow-soft ${accentSoftClass[reason.accent]}`}
+              className={`flex cursor-pointer flex-col gap-4 rounded-2xl border border-line p-6 transition-all hover:-translate-y-1 hover:shadow-soft ${accentSoftClass[reason.accent]}`}
             >
               <AccentIcon icon={reason.icon} accent={reason.accent} size="sm" />
               <h3 className="text-base font-semibold text-ink">{reason.title}</h3>

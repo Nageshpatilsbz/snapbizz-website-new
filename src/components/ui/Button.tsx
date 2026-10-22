@@ -11,7 +11,7 @@ interface ButtonBaseProps {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    'bg-brand-blue text-white shadow-soft hover:bg-brand-blue-dark focus-visible:bg-brand-blue-dark',
+    'btn-shine group bg-linear-to-r from-brand-blue via-brand-blue-dark to-[#0a7a6a] text-white shadow-soft hover:-translate-y-0.5 hover:brightness-110 hover:shadow-lg hover:shadow-brand-blue/40 active:translate-y-0',
   secondary:
     'bg-white text-ink border border-line hover:border-brand-blue hover:text-brand-blue',
   ghost: 'text-ink-700 hover:text-brand-blue',
@@ -19,7 +19,7 @@ const variantClasses: Record<Variant, string> = {
 }
 
 const baseClasses =
-  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-colors duration-200 disabled:opacity-60 disabled:pointer-events-none'
+  'inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 disabled:opacity-60 disabled:pointer-events-none'
 
 type ButtonAsButtonProps = ButtonBaseProps &
   ButtonHTMLAttributes<HTMLButtonElement> & { href?: undefined }
@@ -42,7 +42,7 @@ export function Button(props: ButtonProps) {
     return (
       <a href={href} target={target} rel={rel} onClick={onClick} className={classes}>
         {children}
-        {icon}
+        {icon && <span className="inline-flex transition-transform duration-200 group-hover:translate-x-1">{icon}</span>}
       </a>
     )
   }

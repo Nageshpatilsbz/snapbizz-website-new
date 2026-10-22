@@ -7,15 +7,31 @@ import { Logo } from '../ui/Logo'
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isHidden, setIsHidden] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12)
+    let lastY = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      setIsScrolled(y > 12)
+      const delta = y - lastY
+      if (y < 120) setIsHidden(false)
+      else if (delta > 8) setIsHidden(true)
+      else if (delta < -8) setIsHidden(false)
+      if (Math.abs(delta) > 8) lastY = y
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const hidden = isHidden && !isMobileOpen && openDropdown === null
+
+  useEffect(() => {
+    document.documentElement.dataset.nav = hidden ? 'hidden' : 'shown'
+  }, [hidden])
 
   useEffect(() => {
     document.body.style.overflow = isMobileOpen ? 'hidden' : ''
@@ -26,13 +42,13 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 shadow-soft backdrop-blur-md' : 'bg-transparent'
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        hidden ? '-translate-y-full' : 'translate-y-0'
+      } ${isScrolled ? 'bg-white/90 shadow-soft backdrop-blur-md' : 'bg-transparent'}`}
     >
       <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-3 lg:px-8" aria-label="Primary">
         <a href="#top" className="flex items-center" aria-label="SnapBizz home">
-          <Logo />
+          <Logo className="[&_img]:h-11 sm:[&_img]:h-12" />
         </a>
 
         <ul className="hidden items-center gap-1 lg:flex">

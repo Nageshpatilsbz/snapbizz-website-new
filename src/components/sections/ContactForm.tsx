@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { AlertCircle, CheckCircle2, Loader2, Send } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Clock, Headset, Loader2, Send, ShieldCheck } from 'lucide-react'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { industryOptions, solutionOptions } from '../../data/content'
@@ -84,29 +84,51 @@ export function ContactForm() {
   }
 
   const inputClasses =
-    'w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink-300 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20'
+    'w-full rounded-xl border border-line bg-surface-soft px-4 py-2.5 text-sm text-ink transition placeholder:text-ink-300 hover:border-brand-blue/50 focus:border-brand-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-blue/15'
 
   return (
-    <section id="contact" className="bg-surface-soft py-24 sm:py-28">
-      <Container className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <SectionHeading
-          align="left"
-          eyebrow="Contact"
-          title="Tell Us About Your Business"
-          description="Share a few details about your requirements and our team will get back to you to discuss the right solution."
-          className="max-w-md"
-        />
+    <section
+      id="contact"
+      className="relative flex min-h-screen items-center overflow-hidden bg-linear-to-br from-brand-blue-light via-white to-[#e6f6ee] py-20"
+    >
+      <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-brand-blue/15 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-brand-green/15 blur-3xl" aria-hidden="true" />
+      <Container className="relative grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
+        <div>
+          <SectionHeading
+            align="left"
+            eyebrow="Contact"
+            title="Tell Us About Your Business"
+            description="Share a few details about your requirements and our team will get back to you to discuss the right solution."
+            className="max-w-md"
+          />
+          <ul className="mt-8 flex flex-col gap-4">
+            {[
+              { icon: Clock, text: 'Quick response from our team' },
+              { icon: ShieldCheck, text: 'Your details stay private' },
+              { icon: Headset, text: 'Free demo & guided onboarding' },
+            ].map(({ icon: Icon, text }) => (
+              <li key={text} className="flex items-center gap-3 text-sm font-medium text-ink-700">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-brand-blue shadow-sm">
+                  <Icon className="h-5 w-5" />
+                </span>
+                {text}
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <motion.form
           noValidate
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ y: 20 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5 }}
-          className="rounded-3xl border border-line bg-white p-7 shadow-soft sm:p-9"
+          className="overflow-hidden rounded-3xl border border-white bg-white/90 p-6 shadow-[0_30px_70px_-30px_rgba(42,99,204,0.45)] backdrop-blur sm:p-8"
         >
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="-mx-6 -mt-6 mb-6 h-1.5 bg-linear-to-r from-brand-green via-brand-blue via-40% to-brand-yellow sm:-mx-8 sm:-mt-8" aria-hidden="true" />
+          <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Full Name" error={errors.fullName} htmlFor="fullName">
               <input
                 id="fullName"
@@ -196,12 +218,12 @@ export function ContactForm() {
             </Field>
           </div>
 
-          <div className="mt-5">
+          <div className="mt-4">
             <Field label="Brief Description of Requirements" error={errors.requirements} htmlFor="requirements">
               <textarea
                 id="requirements"
                 name="requirements"
-                rows={4}
+                rows={3}
                 className={inputClasses}
                 value={values.requirements}
                 onChange={(event) => updateField('requirements', event.target.value)}
@@ -210,7 +232,7 @@ export function ContactForm() {
             </Field>
           </div>
 
-          <div className="mt-5 flex items-start gap-3">
+          <div className="mt-4 flex items-start gap-3">
             <input
               id="consent"
               name="consent"
@@ -230,7 +252,7 @@ export function ContactForm() {
           <button
             type="submit"
             disabled={status === 'submitting'}
-            className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-brand-blue-dark disabled:opacity-70 sm:w-auto"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-blue to-brand-blue-dark px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 transition-all hover:-translate-y-0.5 hover:brightness-110 disabled:opacity-70"
           >
             {status === 'submitting' ? (
               <>
@@ -279,3 +301,4 @@ function Field({ label, htmlFor, error, children }: FieldProps) {
     </div>
   )
 }
+

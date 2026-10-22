@@ -11,12 +11,11 @@ import {
   ShieldCheck,
   ShoppingBag,
   Sparkles,
-  Ticket,
   TrainFront,
-  TrafficCone,
   Users,
   Wallet,
 } from 'lucide-react'
+import { TempleIcon, TrafficSignalIcon } from '../components/ui/CustomIcons'
 import type {
   Capability,
   Industry,
@@ -65,7 +64,7 @@ export const navItems: NavItem[] = [
       { label: 'Retail & Distribution', description: 'Billing, payments, and ERP integration.', href: '#industries', icon: ShoppingBag },
       { label: 'Government & Municipalities', description: 'Tax and civic charge collection.', href: '#industries', icon: Landmark },
       { label: 'Parking Management', description: 'Entry, exit, billing, and reconciliation.', href: '#industries', icon: Car },
-      { label: 'Temple Management', description: 'Seva, donations, and prasadam sales.', href: '#industries', icon: Ticket },
+      { label: 'Temple Management', description: 'Seva, donations, and prasadam sales.', href: '#industries', icon: TempleIcon },
     ],
   },
   { label: 'Platform', href: '#platform' },
@@ -185,7 +184,7 @@ export const industries: Industry[] = [
     id: 'temple',
     title: 'Temple Management',
     description: 'Seva ticketing, donations, prasadam sales, multilingual support, and reporting.',
-    icon: Ticket,
+    icon: TempleIcon,
     accent: 'green',
   },
   {
@@ -199,7 +198,7 @@ export const industries: Industry[] = [
     id: 'traffic',
     title: 'Traffic Management',
     description: 'Electronic challan issuance and fine collection.',
-    icon: TrafficCone,
+    icon: TrafficSignalIcon,
     accent: 'red',
   },
   {
