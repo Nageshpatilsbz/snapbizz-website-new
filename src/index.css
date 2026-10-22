@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Product Sans', 'Sora', 'Inter', system-ui, sans-serif;
+
+  /* Brand accent palette (company guidelines) */
+  --color-brand-blue: #4285f4;
+  --color-brand-red: #db4437;
+  --color-brand-yellow: #f4b400;
+  --color-brand-green: #0f9d58;
+
+  --color-brand-blue-dark: #2a63cc;
+  --color-brand-blue-light: #e8f0fe;
+
+  --color-ink: #0b0e14;
+  --color-ink-700: #1a2030;
+  --color-ink-500: #4b5363;
+  --color-ink-300: #8a93a6;
+
+  --color-surface: #ffffff;
+  --color-surface-soft: #f6f8fb;
+  --color-surface-muted: #eef1f6;
+  --color-line: #e3e7ee;
+
+  --shadow-soft: 0 1px 2px rgba(11, 14, 20, 0.04), 0 8px 24px rgba(11, 14, 20, 0.06);
+  --shadow-card: 0 1px 2px rgba(11, 14, 20, 0.05), 0 16px 40px rgba(11, 14, 20, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink-500 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1367 768" width="1367" height="768">
+  <title>SnapBizz Neo — product screen (frame 1 of animation sequence)</title>
+  <!-- Future frames: add sibling g.neo-frame elements here for the crossfade animation -->
+  <g class="neo-frame neo-frame--1">
+    <image href="neo1.png" xlink:href="neo1.png" width="1367" height="768" />
+  </g>
+</svg>
