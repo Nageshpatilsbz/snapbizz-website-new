@@ -92,18 +92,14 @@ export const solutions: Solution[] = [
     icon: ShoppingBag,
     title: 'Turbo & Neo Retail POS',
     description:
-      'Digitize everyday retail operations with Android and Windows POS solutions, bringing billing, inventory, customer engagement, and business insights together. Android POS supports flexible checkout, while Windows POS serves desktop-based retail workflows.',
+      'Android and Windows POS solutions that bring billing, inventory, customer engagement, and business insights together for everyday retail.',
     features: [
       'Itemized and non-itemized billing with product lookup',
       'Multiple carts for faster queue clearance on Android POS',
       'Product catalogs and barcode-based workflows',
       'Inventory and store management',
-      'Online customer orders and delivery workflows',
       'WhatsApp, RCS, SMS campaigns, offers, and Google Review engagement',
       'Sales reports, dashboards, and portal-based store visibility',
-      'Cloud backup and data recovery',
-      'Windows retail workflows and integrations',
-      'Configurable multi-store and enterprise options',
     ],
     cta: 'Request a Retail POS Demo',
   },
@@ -113,7 +109,7 @@ export const solutions: Solution[] = [
     icon: Banknote,
     title: 'Bank-Branded APOS Solutions',
     description:
-      'Help banks and fintechs go beyond payment acceptance with customizable merchant applications on supported Android APOS devices. Everyday business tools strengthen merchant engagement and create opportunities for relevant banking services.',
+      'Customizable merchant applications on supported Android APOS devices, helping banks and fintechs deepen merchant engagement.',
     features: [
       'Bank branding and banners for relevant banking products',
       'Catalog management using the SnapBizz product database',
@@ -121,8 +117,6 @@ export const solutions: Solution[] = [
       'Digital Khata Book for customer dues, sales, and payments',
       'Supported WhatsApp, RCS, SMS, coupons, and Google Review links',
       'Business reports and supported multi-device, multi-store dashboards',
-      'Cloud backup and a centralized portal, based on configuration',
-      'Implementation, sales-team enablement, onboarding, and support as agreed',
     ],
     cta: 'Explore Solution',
   },
@@ -140,7 +134,6 @@ export const solutions: Solution[] = [
       'Collections, distribution, ticketing, and transit workflows',
       'Android APOS and mobile deployments based on requirements',
       'Asset-lite smartphone capabilities with UPI QR where configured',
-      'Compatible lightweight card-acceptance accessories where supported',
     ],
     cta: 'Discuss Your Requirements',
   },
@@ -150,7 +143,7 @@ export const solutions: Solution[] = [
     icon: Wallet,
     title: 'Payment Collection & Reconciliation',
     description:
-      'Connect PC-based billing software with supported APOS devices, match billing records to payment transactions, and simplify reconciliation across supported endpoints and device vendors.',
+      'Connect PC-based billing with supported APOS devices, match billing records to payments, and simplify reconciliation.',
     features: [
       'PC billing-to-APOS integration',
       'Payment initiation and transaction-status handling where supported',

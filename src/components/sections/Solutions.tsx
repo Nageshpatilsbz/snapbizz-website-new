@@ -70,7 +70,7 @@ export function Solutions() {
       <div id="solution-panels" className="relative mt-12">
         <div
           id="solution-tabs"
-          className={`fixed inset-x-0 top-18 z-40 border-b border-line bg-white/95 px-6 py-2.5 shadow-md backdrop-blur transition-all duration-300 lg:px-8 ${
+          className={`fixed inset-x-0 top-18 hidden min-[1390px]:block z-40 border-b border-line bg-white/95 px-6 py-2.5 shadow-md backdrop-blur transition-all duration-300 lg:px-8 ${
             showTabs ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-3 opacity-0'
           }`}
           aria-hidden={!showTabs}
@@ -122,7 +122,7 @@ export function Solutions() {
               >
                 <div className="grid gap-6 lg:grid-cols-5">
                   <div
-                    className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl bg-linear-to-br p-7 text-white shadow-[0_28px_60px_-20px_rgba(15,30,80,0.55)] ring-1 ring-white/25 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_40px_80px_-20px_rgba(15,30,80,0.7)] sm:p-9 lg:col-span-2 ${panelGradients[index % panelGradients.length]}`}
+                    className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl bg-linear-to-br p-7 text-white shadow-[0_28px_60px_-20px_rgba(15,30,80,0.55)] ring-1 ring-white/25 transition-all duration-300 lg:min-h-[26rem] hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_40px_80px_-20px_rgba(15,30,80,0.7)] sm:p-9 lg:col-span-2 ${panelGradients[index % panelGradients.length]}`}
                   >
                     <div className="card-sheen" aria-hidden="true" />
                     <div
@@ -159,7 +159,7 @@ export function Solutions() {
                     </a>
                   </div>
 
-                  <ul className="grid content-start gap-3 sm:grid-cols-2 lg:col-span-3">
+                  <ul className="grid grid-rows-3 content-stretch gap-3 sm:grid-cols-2 lg:col-span-3">
                     {solution.features.map((feature, fi) => (
                       <li
                         key={feature}
