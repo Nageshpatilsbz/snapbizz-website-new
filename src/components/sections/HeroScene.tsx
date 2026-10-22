@@ -3,11 +3,11 @@ import type { CSSProperties } from 'react'
 import { Logo } from '../ui/Logo'
 
 const nodes = [
-  { title: 'Bank partners', note: 'APOS & fintech', icon: Landmark, color: '#1765ee', x: 22, y: 20 },
-  { title: 'Online orders', note: 'Snap order app', icon: Smartphone, color: '#00a878', x: 50, y: 7 },
-  { title: 'Payments', note: 'UPI, cards, cash', icon: CreditCard, color: '#f59e0b', x: 80, y: 20 },
-  { title: 'Inventory', note: 'Live stock', icon: Package, color: '#ef7d22', x: 22, y: 80 },
-  { title: 'Business insights', note: 'Sales analytics', icon: BarChart3, color: '#ef5261', x: 80, y: 80 },
+  { title: 'Bank partners', note: 'APOS & fintech', icon: Landmark, color: '#1765ee', x: 17, y: 16, lx: 7, ly: 9 },
+  { title: 'Online orders', note: 'Snap order app', icon: Smartphone, color: '#00a878', x: 50, y: 6, lx: 50, ly: 2 },
+  { title: 'Payments', note: 'UPI, cards, cash', icon: CreditCard, color: '#f59e0b', x: 83, y: 16, lx: 93, ly: 9 },
+  { title: 'Inventory', note: 'Live stock', icon: Package, color: '#ef7d22', x: 17, y: 86, lx: 7, ly: 96 },
+  { title: 'Business insights', note: 'Sales analytics', icon: BarChart3, color: '#ef5261', x: 86, y: 94, lx: 96, ly: 104 },
 ]
 
 export default function HeroScene() {
@@ -36,16 +36,19 @@ export default function HeroScene() {
               strokeLinecap="round"
               strokeDasharray="1.6 1.8"
               vectorEffect="non-scaling-stroke"
-              className="hero-flow opacity-60"
+              className="hero-flow opacity-60 lg:hidden"
             />
+          ))}
+                  {nodes.map((node) => (
+            <line key={`l-${node.title}`} x1="50" y1="50" x2={node.lx} y2={node.ly} stroke={node.color} strokeWidth="0.35" strokeLinecap="round" strokeDasharray="1.6 1.8" vectorEffect="non-scaling-stroke" className="hero-flow hidden opacity-60 lg:block" />
           ))}
         </svg>
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
           <div className="hero-pulse absolute inset-0 rounded-[2rem] bg-brand-blue/30" />
-          <div className="relative flex w-48 flex-col items-center gap-2 rounded-[2rem] bg-linear-to-br from-brand-blue to-[#0d4fc4] p-3 text-white shadow-[0_24px_50px_-12px_rgba(23,101,238,0.55)] sm:w-64 sm:p-4 lg:w-72">
+          <div className="relative flex w-48 flex-col items-center gap-2 rounded-[2rem] bg-linear-to-br from-brand-blue to-[#0d4fc4] p-3 text-white shadow-[0_24px_50px_-12px_rgba(23,101,238,0.55)] sm:w-52 sm:p-3 xl:w-56 xl:p-4 2xl:w-72">
             <span className="flex w-full items-center justify-center rounded-2xl bg-white px-3 py-3 sm:px-4 sm:py-4">
-              <Logo className="[&_img]:h-14 sm:[&_img]:h-20 lg:[&_img]:h-24" />
+              <Logo className="[&_img]:h-14 sm:[&_img]:h-14 xl:[&_img]:h-20 2xl:[&_img]:h-24" />
             </span>
             <span className="flex w-full flex-col gap-1">
               <span className="h-1.5 w-full rounded-full bg-white/30" />
@@ -61,19 +64,19 @@ export default function HeroScene() {
         {nodes.map((node, index) => (
           <div
             key={node.title}
-            className="hero-float absolute -translate-x-1/2 -translate-y-1/2"
+            className="hero-float absolute left-(--x) top-(--y) -translate-x-1/2 -translate-y-1/2 lg:left-(--lx) lg:top-(--ly)"
             style={{ left: `${node.x}%`, top: `${node.y}%`, '--hero-delay': `${index * -1.1}s` } as CSSProperties}
           >
-            <div className="flex items-center gap-2 rounded-2xl border border-white bg-white/90 p-2 shadow-[0_14px_34px_-14px_rgba(32,44,60,0.35)] backdrop-blur sm:gap-3 sm:p-3">
+            <div className="flex items-center gap-2 rounded-2xl border border-white bg-white/90 p-2 shadow-[0_14px_34px_-14px_rgba(32,44,60,0.35)] backdrop-blur sm:gap-2 sm:p-2 xl:gap-3 xl:p-3">
               <span
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-white sm:h-10 sm:w-10"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-white sm:h-8 sm:w-8 xl:h-10 xl:w-10"
                 style={{ backgroundColor: node.color }}
               >
-                <node.icon className="h-4 w-4 sm:h-5 sm:w-5" />
+                <node.icon className="h-4 w-4 sm:h-4 sm:w-4 xl:h-5 xl:w-5" />
               </span>
               <span className="hidden pr-1 sm:block">
-                <span className="block text-sm font-semibold leading-tight text-ink">{node.title}</span>
-                <span className="block text-xs text-ink-500">{node.note}</span>
+                <span className="block whitespace-nowrap text-xs font-semibold leading-tight text-ink xl:text-sm">{node.title}</span>
+                <span className="block whitespace-nowrap text-[11px] text-ink-500 xl:text-xs">{node.note}</span>
               </span>
             </div>
           </div>
