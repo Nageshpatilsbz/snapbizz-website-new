@@ -22,9 +22,14 @@ Run `npm ci`, then `npm run dev`. Run `npm run build` to build the production si
 Company pages open only when selected, using hash routes compatible with GitHub
 Pages: `#/company/about`, `partners`, `careers`, `faq`, `privacy`, and `terms`
 (each uses the same `#/company/` prefix).
-Edit their copy in [companyPages.ts](src/data/companyPages.ts). The Privacy and
-Terms pages are visibly marked as drafts; replace them with approved legal
-content and remove their `draft` flags before publication. Careers has starter
+Edit their copy in [companyPages.ts](src/data/companyPages.ts). The supplied
+Privacy Policy is formatted in [PrivacyPolicy.tsx](src/components/pages/PrivacyPolicy.tsx),
+preserving its stated update date of 08.April.2021. The supplied software
+agreement and mobile service privacy terms are kept verbatim in
+[termsAndConditions.txt](src/data/termsAndConditions.txt) and displayed on the
+Terms & Conditions page, including the April 15, 2014 effective date. These
+retain their supplied Singapore entity references and are separate from the
+website Privacy Policy. Careers has starter
 copy, not live job listings. The enquiry form is still a local demo, not a live
 submission channel.
 
@@ -36,6 +41,12 @@ existing navigation links keep working.
 The shared `.brand-wash` rule in [index.css](src/index.css) adds static, muted
 brand-colour gradients to light section backgrounds. Cards, dropdowns, and form
 surfaces retain their own backgrounds for readability.
+
+The office address and Google Maps destination are maintained in
+[OfficeLocation.tsx](src/components/sections/OfficeLocation.tsx). The location
+appears after the contact form and is linked from the footer. The map iframe is
+lazy-loaded and uses an address query without an API key; Google resolves the
+location from that address. Loading the embed connects the browser to Google.
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 

@@ -7,6 +7,7 @@ import { ContactForm } from './components/sections/ContactForm'
 import { CtaSection } from './components/sections/CtaSection'
 import { Hero } from './components/sections/Hero'
 import { HowItWorks } from './components/sections/HowItWorks'
+import { OfficeLocation } from './components/sections/OfficeLocation'
 import { Industries } from './components/sections/Industries'
 import { Platform } from './components/sections/Platform'
 import { Solutions } from './components/sections/Solutions'
@@ -72,6 +73,7 @@ function App() {
             <WhyChooseUs />
             <CtaSection />
             <ContactForm />
+            <OfficeLocation />
           </>
         )}
       </main>

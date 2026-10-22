@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react'
 import { companyPageHref, companyPages } from '../../data/companyPages'
 import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
+import { PrivacyPolicy } from './PrivacyPolicy'
+import { TermsAndConditions } from './TermsAndConditions'
 
 export function CompanyPage({ id }: { id: string }) {
   const headingRef = useRef<HTMLHeadingElement>(null)
@@ -49,7 +51,7 @@ export function CompanyPage({ id }: { id: string }) {
       <section className="brand-wash bg-surface-soft py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-[1fr_17rem] lg:items-start">
           <div className="min-w-0 space-y-5">
-            {page.sections.map((section, index) => page.id === 'faq' ? (
+            {page.id === 'privacy' ? <PrivacyPolicy /> : page.id === 'terms' ? <TermsAndConditions /> : page.sections.map((section, index) => page.id === 'faq' ? (
               <details key={section.title} className="group rounded-2xl border border-line bg-white p-6 shadow-sm">
                 <summary className="cursor-pointer text-base font-semibold text-ink marker:text-brand-blue">{section.title}</summary>
                 <p className="mt-4 text-sm leading-relaxed">{section.body}</p>
@@ -61,7 +63,7 @@ export function CompanyPage({ id }: { id: string }) {
                 <p className="mt-3 leading-relaxed">{section.body}</p>
               </article>
             ))}
-            {!page.draft && page.id !== 'careers' ? (
+            {!page.legal && page.id !== 'careers' ? (
               <div className="rounded-2xl bg-brand-blue-light p-6">
                 <h2 className="text-xl font-semibold">Explore the right solution for your business.</h2>
                 <p className="mt-3 text-sm leading-relaxed">Browse the platform or visit the Contact section to review the enquiry details.</p>

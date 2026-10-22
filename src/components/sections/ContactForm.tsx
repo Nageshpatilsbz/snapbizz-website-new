@@ -264,7 +264,8 @@ export function ContactForm() {
             />
             <label htmlFor="consent" className="text-xs leading-relaxed text-ink-500">
               I agree to be contacted about my enquiry and understand my information will be used in
-              accordance with SnapBizz&rsquo;s privacy practices.
+              accordance with SnapBizz&rsquo;s{' '}
+              <a href="#/company/privacy" className="font-medium text-brand-blue-dark underline underline-offset-2">Privacy Policy</a>.
             </label>
           </div>
           {errors.consent ? <p className="mt-1.5 text-xs text-brand-red">{errors.consent}</p> : null}

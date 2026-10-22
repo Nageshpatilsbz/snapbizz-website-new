@@ -71,6 +71,7 @@ export function Footer() {
                 <li key={page.id}><a href={companyPageHref(page.id)} className={linkClass}>{page.label}</a></li>
               ))}
               <li><a href="#contact" className={linkClass}>Contact Us</a></li>
+              <li><a href="#office-location" className={linkClass}>Office &amp; Directions</a></li>
             </ul>
           </nav>
         </div>
