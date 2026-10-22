@@ -18,9 +18,9 @@ export function Navbar() {
       setIsScrolled(y > 12)
       const delta = y - lastY
       if (y < 120) setIsHidden(false)
-      else if (delta > 8) setIsHidden(true)
-      else if (delta < -8) setIsHidden(false)
-      if (Math.abs(delta) > 8) lastY = y
+      else if (delta > 14) setIsHidden(true)
+      else if (delta < -10) setIsHidden(false)
+      if (Math.abs(delta) > 10) lastY = y
     }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -42,11 +42,17 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[transform,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-        hidden ? '-translate-y-full' : 'translate-y-0'
-      } ${isScrolled ? 'bg-white/90 shadow-soft backdrop-blur-md' : 'bg-transparent'}`}
+      className={`fixed inset-x-0 top-0 z-50 will-change-transform transition-[transform,opacity,background-color,box-shadow,backdrop-filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        hidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+      } ${isScrolled ? 'bg-white/85 shadow-soft backdrop-blur-lg' : 'bg-transparent'}`}
     >
-      <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-3 lg:px-8" aria-label="Primary">
+      <motion.nav
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-3 lg:px-8"
+        aria-label="Primary"
+      >
         <a href="#top" className="flex items-center" aria-label="SnapBizz home">
           <Logo className="[&_img]:h-11 sm:[&_img]:h-12" />
         </a>
@@ -61,7 +67,7 @@ export function Navbar() {
             >
               <a
                 href={item.href}
-                className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue"
+                className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-ink-700 transition-all duration-300 hover:bg-surface-soft hover:text-brand-blue"
                 aria-expanded={item.items ? openDropdown === item.label : undefined}
                 aria-haspopup={item.items ? 'true' : undefined}
               >
@@ -76,7 +82,7 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute left-0 top-full w-80 rounded-2xl border border-line bg-white p-2 shadow-card"
+                    className="absolute left-0 top-full max-h-[75vh] w-80 overflow-y-auto rounded-2xl border border-line bg-white p-2 shadow-card"
                   >
                     {item.items.map((dropdownItem) => (
                       <a
@@ -113,7 +119,7 @@ export function Navbar() {
         >
           {isMobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
-      </nav>
+      </motion.nav>
 
       <AnimatePresence>
         {isMobileOpen ? (

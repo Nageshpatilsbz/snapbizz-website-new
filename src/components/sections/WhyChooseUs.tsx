@@ -6,8 +6,8 @@ import { SectionHeading } from '../ui/SectionHeading'
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="bg-surface py-24 sm:py-28">
-      <Container className="flex flex-col gap-14">
+    <section id="why-us" className="flex min-h-screen items-center bg-surface py-24 sm:py-28">
+      <Container className="flex w-full flex-col gap-14">
         <SectionHeading
           eyebrow="Why Choose Us"
           title="Built Around Practical Business Value"
