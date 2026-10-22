@@ -24,11 +24,29 @@ export interface Step {
 }
 
 const flows: Record<string, Step[]> = {
-  'turbo-neo-retail-pos': [
+  'turbo-android-pos': [
     { icon: ScanBarcode, label: 'Scan', detail: 'Barcode or product lookup' },
     { icon: ReceiptText, label: 'Bill & Pay', detail: 'Cash, UPI or card' },
     { icon: CloudUpload, label: 'Sync', detail: 'Cloud backup of every sale' },
     { icon: BarChart3, label: 'Insights', detail: 'Reports and dashboards' },
+  ],
+  'neo-windows-pos': [
+    { icon: ScanBarcode, label: 'Scan', detail: 'Keyboard and scanner billing' },
+    { icon: ReceiptText, label: 'Bill & Print', detail: 'Invoices and receipts' },
+    { icon: CloudUpload, label: 'Sync', detail: 'Cloud backup of every sale' },
+    { icon: BarChart3, label: 'Insights', detail: 'Reports and dashboards' },
+  ],
+  'label-printer': [
+    { icon: ScanBarcode, label: 'Select', detail: 'Pick products to label' },
+    { icon: Layers, label: 'Design', detail: 'Choose a label template' },
+    { icon: ReceiptText, label: 'Print', detail: 'Barcode and price labels' },
+    { icon: BarChart3, label: 'Apply', detail: 'Label shelves and products' },
+  ],
+  'warehouse-portal': [
+    { icon: CloudUpload, label: 'Receive', detail: 'Stock inward entries' },
+    { icon: Network, label: 'Allocate', detail: 'Orders to stores' },
+    { icon: Building2, label: 'Dispatch', detail: 'Track every shipment' },
+    { icon: LayoutDashboard, label: 'Monitor', detail: 'One central dashboard' },
   ],
   'bank-branded-apos': [
     { icon: Landmark, label: 'Bank Brand', detail: 'Your logo and identity' },
@@ -59,15 +77,15 @@ export function SolutionFlow({ solutionId }: { solutionId: string }) {
 export function FlowDiagram({ steps, title = 'How it works' }: { steps: Step[]; title?: string }) {
   return (
     <div
-      className="mt-10 rounded-3xl border border-line bg-white px-3 py-8 shadow-sm sm:px-8 lg:py-12"
+      className="mt-10 rounded-3xl border border-brand-blue/25 bg-brand-blue-light px-3 py-8 shadow-sm sm:px-8 lg:py-12"
       role="img"
       aria-label={`${title}: ${steps.map((step) => step.label).join(', then ')}`}
     >
-      <p className="mb-5 text-center text-xs font-semibold uppercase tracking-widest text-brand-blue">
+      <p className="mb-5 text-center text-xs font-bold uppercase tracking-widest text-brand-blue-dark">
         {title}
       </p>
       <div className="relative grid grid-cols-4">
-        <div className="absolute inset-x-[12.5%] top-8 h-1 rounded-full bg-line" aria-hidden="true">
+        <div className="absolute inset-x-[12.5%] top-8 h-1 rounded-full bg-brand-blue/20" aria-hidden="true">
           <span className="flow-dot absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-linear-to-r from-brand-blue to-brand-green shadow-md shadow-brand-blue/50" />
         </div>
         {steps.map((step, index) => (

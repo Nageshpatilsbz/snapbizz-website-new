@@ -53,8 +53,8 @@ export function Navbar() {
         className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-3 lg:px-8"
         aria-label="Primary"
       >
-        <a href="#top" className="flex items-center" aria-label="SnapBizz home">
-          <Logo className="[&_img]:h-11 sm:[&_img]:h-12" />
+        <a href="#top" className="flex shrink-0 items-center" aria-label="SnapBizz home">
+          <Logo className="[&_img]:h-13 sm:[&_img]:h-14" />
         </a>
 
         <ul className="hidden items-center gap-1 lg:flex">

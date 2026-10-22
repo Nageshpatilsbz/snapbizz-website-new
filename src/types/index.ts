@@ -32,6 +32,10 @@ export interface Solution {
   icon: LucideIcon
   title: string
   description: string
+  platform?: string
+  image?: string
+  imageAlt?: string
+  secondaryImage?: { src: string; alt: string }
   features: string[]
   cta: string
 }
@@ -70,6 +74,7 @@ export interface ContactFormValues {
   companyName: string
   phoneNumber: string
   industry: string
+  customReason: string
   solutionOfInterest: string
   requirements: string
   consent: boolean

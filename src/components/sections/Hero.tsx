@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Banknote, ShoppingBag, Wallet } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from '../ui/Button'
 import HeroScene from './HeroScene'
 
 const offerings = [
-  { label: 'Turbo & Neo Retail POS for Android and Windows', icon: ShoppingBag },
-  { label: 'Bank-Branded APOS & Fintech Solutions', icon: Banknote },
-  { label: 'Enterprise Collections & Payment Reconciliation', icon: Wallet },
+  'Android & Windows POS',
+  'Banking & Fintech',
+  'Collections & Reconciliation',
 ]
 
 export function Hero() {
@@ -23,23 +23,27 @@ export function Hero() {
           animate={{ y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.14em] text-brand-blue-dark sm:text-sm">
+            SnapBizz · Retail POS &amp; Fintech Solutions
+          </p>
           <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
-            SnapBizz{' '}
+            Built for Business.{' '}
             <span className="bg-linear-to-r from-brand-blue via-brand-red via-45% to-brand-yellow bg-clip-text text-transparent">
-              Retail POS
-            </span>{' '}
-            &amp; Fintech Solutions
+              Designed for Growth.
+            </span>
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink-500">
-            From checkout to payments, one smart platform for every retailer, bank, and business.
+            One smart platform connecting retail checkout, banking solutions, and enterprise payment operations.
           </p>
 
-          <ul className="mt-6 flex flex-col gap-2.5 max-w-xl">
-            {offerings.map((offering) => (
-              <li key={offering.label} className="flex items-center gap-2.5 text-sm font-medium text-ink-700">
-                <offering.icon className="h-4 w-4 shrink-0 text-brand-blue" aria-hidden="true" />
-                {offering.label}
+          <ul className="mt-6 flex max-w-xl flex-wrap items-center gap-x-3 gap-y-2 text-xs font-semibold uppercase tracking-wide text-ink-700">
+            {offerings.map((offering, index) => (
+              <li key={offering} className="inline-flex items-center gap-3">
+                {offering}
+                {index < offerings.length - 1 ? (
+                  <span className="text-brand-blue" aria-hidden="true">·</span>
+                ) : null}
               </li>
             ))}
           </ul>
@@ -63,4 +67,3 @@ export function Hero() {
     </section>
   )
 }
-

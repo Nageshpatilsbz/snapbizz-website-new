@@ -1,9 +1,9 @@
 import { motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight, BarChart3, Check, ChevronRight, LayoutDashboard } from 'lucide-react'
+import { ArrowRight, BarChart3, Check, ChevronRight, Info, LayoutDashboard, Network } from 'lucide-react'
 import { useId, useState } from 'react'
 import type { PointerEvent } from 'react'
 import { platformFeatureDetails, platformFeatures, retailServices } from '../../data/content'
-import { accentSoftClass, accentTextClass } from '../ui/AccentIcon'
+import { AccentIcon, accentBgClass, accentSoftClass, accentTextClass } from '../ui/AccentIcon'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
 
@@ -216,17 +216,45 @@ export function Platform() {
           </div>
         </div>
 
-        <div className="border-t border-line pt-10">
-          <h3 className="text-xl font-semibold text-ink">Connected Services for Everyday Retail</h3>
-          <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {retailServices.map((service) => (
-              <li key={service.name} className="border-l-2 border-brand-green pl-4">
-                <h4 className="text-base font-semibold text-ink">{service.name}</h4>
-                <p className="mt-2 text-sm leading-relaxed text-ink-500">{service.description}</p>
-              </li>
+        <div className="rounded-[2rem] border border-line bg-surface-soft p-5 sm:p-8">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="mb-3 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">
+                <Network className="h-4 w-4" aria-hidden="true" />
+                The SnapBizz ecosystem
+              </p>
+              <h3 className="text-xl font-semibold tracking-tight text-ink sm:text-2xl">Connected Services for Everyday Retail</h3>
+            </div>
+            <span className="rounded-full border border-brand-blue/15 bg-white px-3 py-1.5 text-xs font-medium text-brand-blue-dark">
+              {retailServices.length} connected services
+            </span>
+          </div>
+          <ul className="mt-7 grid auto-rows-fr gap-3 sm:grid-cols-2 lg:grid-cols-5 xl:gap-4">
+            {retailServices.map((service, index) => (
+              <motion.li
+                key={service.name}
+                initial={reducedMotion ? false : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.4, delay: reducedMotion ? 0 : index * 0.06 }}
+                className="h-full"
+              >
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white p-5 shadow-[0_2px_6px_rgba(11,14,20,0.025)] transition-[transform,box-shadow,border-color] duration-300 hover:border-brand-blue/25 hover:shadow-[0_14px_28px_-12px_rgba(11,14,20,0.18)] motion-safe:hover:-translate-y-1">
+                  <span className={`absolute left-5 top-0 h-0.5 w-8 rounded-b-full transition-[width] duration-300 group-hover:w-14 ${accentBgClass[service.accent]}`} aria-hidden="true" />
+                  <div className="mb-5 flex items-center justify-between gap-2">
+                    <AccentIcon icon={service.icon} accent={service.accent} className="transition-transform duration-300 motion-safe:group-hover:-rotate-6" />
+                    <span className="text-[10px] font-semibold tabular-nums tracking-wider text-ink-300" aria-hidden="true">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <h4 className="text-base font-semibold tracking-tight text-ink">{service.name}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-500">{service.description}</p>
+                </div>
+              </motion.li>
             ))}
           </ul>
-          <p className="mt-6 text-xs leading-relaxed text-ink-500">
+          <p className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-ink-500">
+            <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink-300" aria-hidden="true" />
             Product availability and feature coverage may vary by solution, deployment, and partnership.
           </p>
         </div>

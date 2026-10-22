@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion'
-import { AlertCircle, CheckCircle2, Clock, Headset, Loader2, Send, ShieldCheck } from 'lucide-react'
+import { AlertCircle, Building2, CheckCircle2, Clock, Headset, Layers, Loader2, Send, ShieldCheck } from 'lucide-react'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { industryOptions, solutionOptions } from '../../data/content'
 import type { ContactFormValues } from '../../types'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
+import { Select } from '../ui/Select'
 
 const initialValues: ContactFormValues = {
   fullName: '',
@@ -13,6 +14,7 @@ const initialValues: ContactFormValues = {
   companyName: '',
   phoneNumber: '',
   industry: '',
+  customReason: '',
   solutionOfInterest: '',
   requirements: '',
   consent: false,
@@ -39,6 +41,9 @@ function validate(values: ContactFormValues): Errors {
     errors.phoneNumber = 'Enter a valid phone number.'
   }
   if (!values.industry) errors.industry = 'Please select your industry.'
+  if (values.industry === 'Custom' && !values.customReason.trim()) {
+    errors.customReason = 'Please describe your industry or reason for contacting us.'
+  }
   if (!values.solutionOfInterest) errors.solutionOfInterest = 'Please select a solution.'
   if (!values.requirements.trim()) errors.requirements = 'Please share a brief description.'
   if (!values.consent) errors.consent = 'Please accept the privacy consent to continue.'
@@ -182,40 +187,55 @@ export function ContactForm() {
             </Field>
 
             <Field label="Industry" error={errors.industry} htmlFor="industry">
-              <select
+              <Select
                 id="industry"
                 name="industry"
-                className={inputClasses}
+                icon={Building2}
+                placeholder="Select your industry"
+                options={industryOptions}
                 value={values.industry}
-                onChange={(event) => updateField('industry', event.target.value)}
-                aria-invalid={Boolean(errors.industry)}
-              >
-                <option value="">Select your industry</option>
-                {industryOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+                onChange={(value) => {
+                  updateField('industry', value)
+                  if (value !== 'Custom') updateField('customReason', '')
+                  setErrors((previous) => ({ ...previous, industry: undefined, customReason: undefined }))
+                }}
+                invalid={Boolean(errors.industry)}
+              />
             </Field>
 
             <Field label="Solution of Interest" error={errors.solutionOfInterest} htmlFor="solutionOfInterest">
-              <select
+              <Select
                 id="solutionOfInterest"
                 name="solutionOfInterest"
-                className={inputClasses}
+                icon={Layers}
+                placeholder="Select a solution"
+                options={solutionOptions}
                 value={values.solutionOfInterest}
-                onChange={(event) => updateField('solutionOfInterest', event.target.value)}
-                aria-invalid={Boolean(errors.solutionOfInterest)}
-              >
-                <option value="">Select a solution</option>
-                {solutionOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+                onChange={(value) => {
+                  updateField('solutionOfInterest', value)
+                  setErrors((previous) => ({ ...previous, solutionOfInterest: undefined }))
+                }}
+                invalid={Boolean(errors.solutionOfInterest)}
+              />
             </Field>
+            {values.industry === 'Custom' ? (
+              <div className="sm:col-span-2">
+                <Field label="Custom Reason" error={errors.customReason} htmlFor="customReason">
+                  <textarea
+                    id="customReason"
+                    name="customReason"
+                    rows={2}
+                    placeholder="Describe your industry, partnership, or reason for contacting us."
+                    className={inputClasses}
+                    value={values.customReason}
+                    onChange={(event) => updateField('customReason', event.target.value)}
+                    aria-invalid={Boolean(errors.customReason)}
+                    aria-describedby={errors.customReason ? 'customReason-error' : undefined}
+                    required
+                  />
+                </Field>
+              </div>
+            ) : null}
           </div>
 
           <div className="mt-4">
@@ -293,12 +313,11 @@ interface FieldProps {
 function Field({ label, htmlFor, error, children }: FieldProps) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={htmlFor} className="text-xs font-semibold uppercase tracking-wide text-ink-700">
+      <label id={`${htmlFor}-label`} htmlFor={htmlFor} className="text-xs font-semibold uppercase tracking-wide text-ink-700">
         {label}
       </label>
       {children}
-      {error ? <span className="text-xs text-brand-red">{error}</span> : null}
+      {error ? <span id={`${htmlFor}-error`} className="text-xs text-brand-red">{error}</span> : null}
     </div>
   )
 }
-

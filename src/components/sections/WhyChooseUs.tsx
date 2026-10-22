@@ -1,36 +1,101 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion'
+import { useRef, type ReactNode } from 'react'
 import { reasons } from '../../data/content'
-import { AccentIcon, accentSoftClass } from '../ui/AccentIcon'
+import { AccentIcon, accentBgClass, accentSoftClass, accentTextClass } from '../ui/AccentIcon'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
 
-export function WhyChooseUs() {
+function ReasonReveal({ index, progress, children }: {
+  index: number
+  progress: MotionValue<number>
+  children: ReactNode
+}) {
+  const reduceMotion = useReducedMotion()
+  const range = [index / reasons.length, (index + 1) / reasons.length]
+  const opacity = useTransform(progress, range, [0, 1])
+  const y = useTransform(progress, range, [32, 0])
+  const rotateX = useTransform(progress, range, [6, 0])
+
   return (
-    <section id="why-us" className="flex min-h-screen items-center bg-surface py-24 sm:py-28">
-      <Container className="flex w-full flex-col gap-14">
+    <motion.li
+      style={reduceMotion ? { opacity: 1, y: 0, rotateX: 0 } : { opacity, y, rotateX }}
+      className="h-full"
+    >
+      {children}
+    </motion.li>
+  )
+}
+
+export function WhyChooseUs() {
+  const gridRef = useRef<HTMLUListElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: gridRef,
+    offset: ['start 92%', 'end 75%'],
+  })
+
+  return (
+    <section id="why-us" className="relative isolate flex min-h-screen items-center overflow-hidden bg-surface-soft py-24 sm:py-28">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,white,transparent_70%)]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -left-32 top-1/3 -z-10 h-96 w-96 rounded-full bg-brand-blue/5 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-32 bottom-0 -z-10 h-96 w-96 rounded-full bg-brand-green/5 blur-3xl"
+        aria-hidden="true"
+      />
+      <Container className="flex w-full flex-col gap-12 sm:gap-14">
         <SectionHeading
           eyebrow="Why Choose Us"
           title="Built Around Practical Business Value"
           description="We focus on what actually helps your operations run better &mdash; not unsupported marketing claims."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul
+          ref={gridRef}
+          className="relative grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          style={{ perspective: 1200 }}
+        >
           {reasons.map((reason, index) => (
-            <motion.div
+            <ReasonReveal
               key={reason.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.4, delay: (index % 3) * 0.08 }}
-              whileHover={{ y: -6 }}
-              className={`flex cursor-pointer flex-col gap-4 rounded-2xl border border-line p-6 transition-all hover:-translate-y-1 hover:shadow-soft ${accentSoftClass[reason.accent]}`}
+              index={index}
+              progress={scrollYProgress}
             >
-              <AccentIcon icon={reason.icon} accent={reason.accent} size="sm" />
-              <h3 className="text-base font-semibold text-ink">{reason.title}</h3>
-              <p className="text-sm leading-relaxed text-ink-500">{reason.description}</p>
-            </motion.div>
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white bg-white p-6 shadow-[0_2px_4px_rgba(15,23,42,0.02),0_12px_32px_-16px_rgba(15,23,42,0.18)] ring-1 ring-ink/5 transition-[transform,box-shadow] duration-300 hover:shadow-[0_8px_16px_-8px_rgba(15,23,42,0.1),0_28px_48px_-20px_rgba(15,23,42,0.24)] motion-safe:hover:-translate-y-1.5 sm:p-7">
+                <div
+                  className={`pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full blur-3xl transition-opacity duration-500 group-hover:opacity-80 ${accentSoftClass[reason.accent]}`}
+                  aria-hidden="true"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 -translate-x-[150%] bg-linear-to-r from-transparent via-white/70 to-transparent -skew-x-12 transition-transform duration-1000 motion-safe:group-hover:translate-x-[150%]"
+                  aria-hidden="true"
+                />
+                <reason.icon
+                  className={`pointer-events-none absolute -bottom-5 -right-4 h-36 w-36 -rotate-12 opacity-[0.045] ${accentTextClass[reason.accent]}`}
+                  strokeWidth={1}
+                  aria-hidden="true"
+                />
+                <div className="relative mb-6 flex items-center justify-between">
+                  <span className="rounded-2xl bg-white p-1.5 shadow-[0_4px_12px_rgba(15,23,42,0.08)] ring-1 ring-ink/5 transition-transform duration-300 motion-safe:group-hover:-rotate-6 motion-safe:group-hover:scale-105">
+                    <AccentIcon icon={reason.icon} accent={reason.accent} className="rounded-xl" />
+                  </span>
+                  <span className="font-display text-sm font-semibold tabular-nums tracking-widest text-ink-300" aria-hidden="true">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <h3 className="relative text-lg font-semibold leading-snug tracking-tight text-ink">{reason.title}</h3>
+                <p className="relative mt-3 flex-1 text-sm leading-relaxed text-ink-500">{reason.description}</p>
+                <div className="relative mt-6 h-px bg-line/70" aria-hidden="true">
+                  <span className={`absolute inset-y-0 left-0 w-10 transition-[width] duration-500 group-hover:w-20 ${accentBgClass[reason.accent]}`} />
+                </div>
+              </article>
+            </ReasonReveal>
           ))}
-        </div>
+        </ul>
       </Container>
     </section>
   )

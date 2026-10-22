@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Globe2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { solutions } from '../../data/content'
 import { Container } from '../ui/Container'
@@ -13,6 +13,8 @@ const panelGradients = [
   'from-brand-green via-[#12a89a] to-[#1fc1e0]',
   'from-[#8f5bd6] to-brand-blue',
   'from-brand-red to-[#f08a24]',
+  'from-[#f4b400] to-[#f08a24]',
+  'from-[#db4437] to-[#8f5bd6]',
 ]
 
 export function Solutions() {
@@ -75,7 +77,7 @@ export function Solutions() {
           }`}
           aria-hidden={!showTabs}
         >
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-1.5 rounded-xl bg-surface-soft p-1.5 xl:grid-cols-4">
+          <div className="mx-auto grid max-w-7xl grid-cols-4 gap-1.5 rounded-xl bg-surface-soft p-1.5 xl:grid-cols-7">
             {solutions.map((solution) => {
               const isActive = solution.id === activeId
               return (
@@ -109,7 +111,7 @@ export function Solutions() {
             key={solution.id}
             id={panelId(solution.id)}
             data-solution={solution.id}
-            className={`flex min-h-screen items-center pb-12 pt-44 ${
+            className={`flex min-h-screen items-center pb-10 pt-24 min-[1390px]:pt-36 ${
               index % 2 === 0 ? 'bg-surface-soft' : 'bg-white'
             }`}
           >
@@ -122,7 +124,7 @@ export function Solutions() {
               >
                 <div className="grid gap-6 lg:grid-cols-5">
                   <div
-                    className={`group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl bg-linear-to-br p-7 text-white shadow-[0_28px_60px_-20px_rgba(15,30,80,0.55)] ring-1 ring-white/25 transition-all duration-300 lg:min-h-[26rem] hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_40px_80px_-20px_rgba(15,30,80,0.7)] sm:p-9 lg:col-span-2 ${panelGradients[index % panelGradients.length]}`}
+                    className={`solution-product-card group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl bg-linear-to-br p-6 text-white shadow-[0_28px_60px_-20px_rgba(15,30,80,0.55)] ring-1 ring-white/25 transition-all duration-300 lg:min-h-[26rem] hover:-translate-y-2 hover:scale-[1.015] hover:shadow-[0_40px_80px_-20px_rgba(15,30,80,0.7)] lg:col-span-2 ${panelGradients[index % panelGradients.length]}`}
                   >
                     <div className="card-sheen" aria-hidden="true" />
                     <div
@@ -138,21 +140,75 @@ export function Solutions() {
                       className="pointer-events-none absolute -left-10 -top-10 h-48 w-48 rounded-full bg-white/25 blur-3xl"
                       aria-hidden="true"
                     />
-                    <span className="relative text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                      Solution {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span className="icon-glint relative mt-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 shadow-lg ring-1 ring-white/50 backdrop-blur transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
-                      <solution.icon className="h-8 w-8" strokeWidth={1.75} aria-hidden="true" />
-                    </span>
-                    <h3 className="relative mt-6 text-2xl font-semibold tracking-tight !text-white sm:text-3xl">
-                      {solution.title}
-                    </h3>
-                    <p className="relative mt-3 text-sm leading-relaxed text-white/85 sm:text-base">
+                    <div className="relative flex flex-wrap items-center justify-between gap-2">
+                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
+                        Solution {String(index + 1).padStart(2, '0')}
+                      </span>
+                      {solution.platform ? (
+                        <span className="inline-flex w-fit items-center rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-white/50 backdrop-blur">
+                          {solution.platform}
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="relative mt-4 flex items-center gap-3">
+                      <span className="icon-glint relative inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/20 shadow-lg ring-1 ring-white/50 backdrop-blur transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                        <solution.icon className="h-6 w-6" strokeWidth={1.75} aria-hidden="true" />
+                      </span>
+                      <h3 className="text-2xl font-semibold leading-tight tracking-tight !text-white">
+                        {solution.title}
+                      </h3>
+                    </div>
+                    <p className="relative mt-3 text-sm leading-relaxed text-white/85">
                       {solution.description}
                     </p>
+                    {solution.image ? (
+                      <div className="solution-product-image relative my-4 flex h-36 items-center justify-center lg:h-[clamp(7rem,18vh,10rem)]">
+                        <div className={solution.secondaryImage ? 'grid h-full w-full max-w-sm grid-cols-[1fr_0.4fr] items-center gap-2' : 'contents'}>
+                        {solution.platform?.startsWith('Web') ? (
+                          <div className="flex max-h-full w-full max-w-[18rem] flex-col overflow-hidden rounded-xl border border-white/25 bg-slate-900 shadow-[0_16px_24px_-8px_rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-105">
+                            <div className="flex h-8 shrink-0 items-center gap-3 bg-slate-800 px-3">
+                              <div className="flex shrink-0 gap-1" aria-hidden="true">
+                                <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
+                                <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                              </div>
+                              <span className="flex min-w-0 flex-1 items-center justify-center gap-1.5 rounded bg-slate-900 px-2 py-0.5 text-[9px] text-slate-300">
+                                <Globe2 className="h-3 w-3 shrink-0" aria-hidden="true" />
+                                <span className="truncate">SnapBizz Warehouse Portal</span>
+                              </span>
+                            </div>
+                            <img
+                              src={solution.image}
+                              alt={solution.imageAlt ?? solution.title}
+                              loading="lazy"
+                              decoding="async"
+                              className="block min-h-0 w-full object-contain"
+                            />
+                          </div>
+                        ) : (
+                          <img
+                            src={solution.image}
+                            alt={solution.imageAlt ?? solution.title}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full w-full object-contain drop-shadow-[0_16px_18px_rgba(0,0,0,0.25)] transition-transform duration-500 group-hover:scale-105"
+                          />
+                        )}
+                        {solution.secondaryImage ? (
+                          <img
+                            src={solution.secondaryImage.src}
+                            alt={solution.secondaryImage.alt}
+                            loading="lazy"
+                            decoding="async"
+                            className="h-full min-h-0 w-full object-contain drop-shadow-[0_16px_18px_rgba(0,0,0,0.25)] transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : null}
+                        </div>
+                      </div>
+                    ) : null}
                     <a
                       href="#contact"
-                      className="group relative mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-blue-dark transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                      className="group relative mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-blue-dark transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
                     >
                       {solution.cta}
                       <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />

@@ -137,3 +137,68 @@ button:not(:disabled), [role='button']:not([aria-disabled='true']) { cursor: poi
 
 #solution-tabs { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); transition-duration: 500ms; }
 html[data-nav='hidden'] #solution-tabs { top: 0; }
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .solution-product-card {
+    min-height: 24rem;
+    padding: 1.25rem;
+  }
+
+  .solution-product-image {
+    height: 7rem;
+    margin-block: 0.75rem;
+  }
+}
+
+@keyframes process-think {
+  0%, 100% { transform: translateY(0); opacity: 0.4; }
+  50% { transform: translateY(-4px); opacity: 1; }
+}
+@keyframes process-idea {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+@keyframes process-configure {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(14px); }
+}
+@keyframes process-launch {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes process-support {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+@keyframes process-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.process-story .process-idea,
+.process-story .process-config-check,
+.process-story .process-deploy-check,
+.process-story .process-support-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.process-story .process-thought-dot { animation: process-think 1.2s ease-in-out infinite; }
+.process-story .process-idea,
+.process-story .process-config-check,
+.process-story .process-deploy-check { animation: process-idea 1.7s ease-in-out infinite; }
+.process-story .process-slider { animation: process-configure 2.4s ease-in-out infinite; }
+.process-story .process-slider-reverse { animation-delay: -1.2s; }
+.process-story .process-rocket { animation: process-launch 1.7s ease-in-out infinite; }
+.process-story .process-support-ring { animation: process-support 1.7s ease-out infinite; }
+.process-story .process-stage-progress { animation: process-progress 3.4s linear both; }
+.process-story [class^='process-'],
+.process-story [class*=' process-'] {
+  animation-play-state: paused;
+}
+.process-story[data-playing='true'] [data-active='true'] [class^='process-'],
+.process-story[data-playing='true'] [data-active='true'] [class*=' process-'] {
+  animation-play-state: running;
+}
+@media (prefers-reduced-motion: reduce) {
+  .process-story [class^='process-'],
+  .process-story [class*=' process-'] { animation: none; }
+}

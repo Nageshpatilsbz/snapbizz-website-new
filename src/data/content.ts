@@ -14,10 +14,18 @@ import {
   TrainFront,
   Users,
   Wallet,
+  type LucideIcon,
 } from 'lucide-react'
 import { TempleIcon, TrafficSignalIcon } from '../components/ui/CustomIcons'
+import turboImg from '../assets/products/turbo.png'
+import neoImg from '../assets/products/neo.png'
+import printerImg from '../assets/products/printer.png'
+import warehousePortalImg from '../assets/w-portal.png'
+import aposImg from '../assets/products/apos.png'
+import tabletImg from '../assets/products/tablet.png'
 import type {
   Capability,
+  BrandAccent,
   Industry,
   NavItem,
   PlatformFeature,
@@ -32,10 +40,28 @@ export const navItems: NavItem[] = [
     href: '#solutions',
     items: [
       {
-        label: 'Turbo & Neo Retail POS',
-        description: 'Android and Windows billing, inventory, and customer engagement.',
-        href: '#solution-turbo-neo-retail-pos',
+        label: 'Turbo POS (Android)',
+        description: 'Android POS terminal for billing, inventory, and engagement.',
+        href: '#solution-turbo-android-pos',
         icon: ShoppingBag,
+      },
+      {
+        label: 'Neo POS (Windows)',
+        description: 'Windows POS software for laptops and desktops.',
+        href: '#solution-neo-windows-pos',
+        icon: LayoutDashboard,
+      },
+      {
+        label: 'Label Printer',
+        description: 'Barcode and price label printing for your POS.',
+        href: '#solution-label-printer',
+        icon: Receipt,
+      },
+      {
+        label: 'Warehouse Portal',
+        description: 'Stock, orders, and multi-location visibility.',
+        href: '#solution-warehouse-portal',
+        icon: Building2,
       },
       {
         label: 'Bank-Branded APOS',
@@ -87,27 +113,93 @@ export const capabilities: Capability[] = [
 
 export const solutions: Solution[] = [
   {
-    id: 'turbo-neo-retail-pos',
+    id: 'turbo-android-pos',
     accent: 'green',
     icon: ShoppingBag,
-    title: 'Turbo & Neo Retail POS',
+    title: 'Turbo POS',
+    platform: 'Android',
+    image: turboImg,
+    imageAlt: 'SnapBizz Turbo Android POS terminal',
     description:
-      'Android and Windows POS solutions that bring billing, inventory, customer engagement, and business insights together for everyday retail.',
+      'Android POS terminal for fast counter billing, inventory, customer engagement, and business insights.',
     features: [
       'Itemized and non-itemized billing with product lookup',
-      'Multiple carts for faster queue clearance on Android POS',
+      'Multiple carts for faster queue clearance',
       'Product catalogs and barcode-based workflows',
       'Inventory and store management',
-      'WhatsApp, RCS, SMS campaigns, offers, and Google Review engagement',
+      'WhatsApp, RCS, SMS campaigns, offers, and Google Reviews',
       'Sales reports, dashboards, and portal-based store visibility',
     ],
-    cta: 'Request a Retail POS Demo',
+    cta: 'Request a Turbo Demo',
+  },
+  {
+    id: 'neo-windows-pos',
+    accent: 'blue',
+    icon: LayoutDashboard,
+    title: 'Neo POS',
+    platform: 'Windows',
+    image: neoImg,
+    imageAlt: 'SnapBizz Neo Windows POS on a laptop',
+    description:
+      'Windows POS software for laptops and desktops, built for high-volume billing and full store management.',
+    features: [
+      'Fast keyboard and barcode-scanner billing',
+      'Works on existing Windows laptops and desktops',
+      'Product catalogs, bulk import, and stock control',
+      'Printer and label integration',
+      'Customer engagement and offers',
+      'Sales reports and multi-store portal visibility',
+    ],
+    cta: 'Request a Neo Demo',
+  },
+  {
+    id: 'label-printer',
+    accent: 'yellow',
+    icon: Receipt,
+    title: 'Label Printer',
+    platform: 'Hardware',
+    image: printerImg,
+    imageAlt: 'TSC label printer for barcode and price labels',
+    description:
+      'Barcode and price label printing that works with SnapBizz POS for shelves, products, and packaging.',
+    features: [
+      'Barcode and price label printing',
+      'Thermal printing with no ink or toner',
+      'Works with Turbo and Neo POS',
+      'Custom label sizes and templates',
+      'Quick shelf and product labelling',
+      'Reliable, durable build for daily use',
+    ],
+    cta: 'Ask About Printers',
+  },
+  {
+    id: 'warehouse-portal',
+    accent: 'red',
+    icon: Building2,
+    title: 'Warehouse Portal',
+    platform: 'Web',
+    image: warehousePortalImg,
+    imageAlt: 'SnapBizz Warehouse Portal web app showing the product catalogue and inventory',
+    description:
+      'Web portal for distributors and warehouses to manage stock, orders, and store-level visibility.',
+    features: [
+      'Central inventory across warehouses and stores',
+      'Order and dispatch tracking',
+      'Product catalog management',
+      'Multi-location dashboards',
+      'Reports and audit-ready records',
+      'Integration with SnapBizz POS and ERP',
+    ],
+    cta: 'Request Portal Access',
   },
   {
     id: 'bank-branded-apos',
     accent: 'blue',
     icon: Banknote,
     title: 'Bank-Branded APOS Solutions',
+    platform: 'Android',
+    image: aposImg,
+    imageAlt: 'Bank-branded Android APOS handheld device',
     description:
       'Customizable merchant applications on supported Android APOS devices, helping banks and fintechs deepen merchant engagement.',
     features: [
@@ -125,6 +217,9 @@ export const solutions: Solution[] = [
     accent: 'green',
     icon: Layers,
     title: 'Custom Enterprise Solutions',
+    platform: 'Custom',
+    image: tabletImg,
+    imageAlt: 'SnapBizz tablet showing the Billing Monitor for custom enterprise workflows',
     description:
       'Purpose-built workflows for businesses with specialized operational requirements, carrying your own branding across every customer touchpoint.',
     features: [
@@ -142,6 +237,13 @@ export const solutions: Solution[] = [
     accent: 'yellow',
     icon: Wallet,
     title: 'Payment Collection & Reconciliation',
+    platform: 'Web + POS',
+    image: warehousePortalImg,
+    imageAlt: 'SnapBizz Warehouse Portal web interface alongside an APOS payment device',
+    secondaryImage: {
+      src: aposImg,
+      alt: 'APOS device connected to PC billing for payment collection',
+    },
     description:
       'Connect PC-based billing with supported APOS devices, match billing records to payments, and simplify reconciliation.',
     features: [
@@ -244,12 +346,12 @@ export const platformFeatureDetails: Record<string, string[]> = {
   'Training & Merchant Support': ['Product training and sales-team enablement', 'Implementation assistance and merchant onboarding', 'Ongoing support as agreed with the partner'],
 }
 
-export const retailServices = [
-  { name: 'SnapBilling', description: 'Billing, inventory, and day-to-day retail operations.' },
-  { name: 'SnapOrder', description: 'Online ordering and digital shopping experiences.' },
-  { name: 'SnapPulse', description: 'Retail data, reports, and business analytics.' },
-  { name: 'SnapSupply', description: 'Digital ordering of supplies for retailers.' },
-  { name: 'SnapConnect', description: 'Customer communication and engagement.' },
+export const retailServices: { name: string; description: string; icon: LucideIcon; accent: BrandAccent }[] = [
+  { name: 'SnapBilling', description: 'Billing, inventory, and day-to-day retail operations.', icon: ReceiptText, accent: 'blue' },
+  { name: 'SnapOrder', description: 'Online ordering and digital shopping experiences.', icon: ShoppingBag, accent: 'green' },
+  { name: 'SnapPulse', description: 'Retail data, reports, and business analytics.', icon: LayoutDashboard, accent: 'red' },
+  { name: 'SnapSupply', description: 'Digital ordering of supplies for retailers.', icon: Layers, accent: 'yellow' },
+  { name: 'SnapConnect', description: 'Customer communication and engagement.', icon: Users, accent: 'blue' },
 ]
 
 export const processSteps: ProcessStep[] = [
@@ -279,5 +381,5 @@ export const reasons: ReasonItem[] = [
   { title: 'Dedicated Customer Support', description: 'A team invested in your rollout and ongoing operations.', icon: Users, accent: 'green' },
 ]
 
-export const industryOptions = industries.map((industry) => industry.title)
+export const industryOptions = [...industries.map((industry) => industry.title), 'Bank', 'Device Partner', 'Custom']
 export const solutionOptions = solutions.map((solution) => solution.title)

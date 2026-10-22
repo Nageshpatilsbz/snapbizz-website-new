@@ -16,7 +16,7 @@ export function Footer() {
           <div>
             <Logo variant="light" className="rounded-2xl px-5 py-3 shadow-lg [&_img]:h-12" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/80">
-              SnapBizz helps retailers digitize their stores with Turbo &amp; Neo POS solutions and
+              SnapBizz helps retailers digitize their stores with Turbo (Android) &amp; Neo (Windows) POS solutions and
               enables banks and fintechs to offer merchant business applications, payment
               integrations, and customized enterprise workflows.
             </p>
