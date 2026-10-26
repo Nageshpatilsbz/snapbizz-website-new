@@ -57,6 +57,12 @@
     radial-gradient(ellipse at 60% 90%, rgba(244, 180, 0, 0.09), transparent 50%);
 }
 
+html[data-prerendered] main [style*="opacity:0"],
+html[data-prerendered] header nav {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

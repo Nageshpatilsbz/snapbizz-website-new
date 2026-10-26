@@ -5,6 +5,7 @@ import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { PrivacyPolicy } from './PrivacyPolicy'
 import { TermsAndConditions } from './TermsAndConditions'
+import { SiteLink } from '../ui/SiteLink'
 
 export function CompanyPage({ id }: { id: string }) {
   const headingRef = useRef<HTMLHeadingElement>(null)
@@ -32,9 +33,9 @@ export function CompanyPage({ id }: { id: string }) {
     <>
       <section className="brand-wash bg-surface pb-16 pt-32 sm:pb-20">
         <Container>
-          <a href="#top" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
+          <SiteLink href="#top" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to home
-          </a>
+          </SiteLink>
           <div className="mt-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-blue shadow-soft">
             <Icon className="h-7 w-7" aria-hidden="true" />
           </div>

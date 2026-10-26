@@ -1,4 +1,5 @@
 import { Building2, FileText, Handshake, HelpCircle, ShieldCheck, Users, type LucideIcon } from 'lucide-react'
+import { pageHref } from '../lib/urls'
 
 interface CompanyPageContent {
   id: string
@@ -83,4 +84,4 @@ export const companyPages: CompanyPageContent[] = [
   },
 ]
 
-export const companyPageHref = (id: string) => `#/company/${id}`
+export const companyPageHref = (id: string) => pageHref(`${id}/`)

@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import { SiteLink } from './SiteLink'
 
 type Variant = 'primary' | 'secondary' | 'ghost' | 'inverted'
 
@@ -40,10 +41,10 @@ export function Button(props: ButtonProps) {
   if ('href' in props && props.href) {
     const { href, target, rel, onClick } = props
     return (
-      <a href={href} target={target} rel={rel} onClick={onClick} className={classes}>
+      <SiteLink href={href} target={target} rel={rel} onClick={onClick} className={classes}>
         {children}
         {icon && <span className="inline-flex transition-transform duration-200 group-hover:translate-x-1">{icon}</span>}
-      </a>
+      </SiteLink>
     )
   }
 

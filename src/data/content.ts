@@ -2,6 +2,7 @@ import {
   Banknote,
   Building2,
   Car,
+  Database,
   Landmark,
   Layers,
   LayoutDashboard,
@@ -34,6 +35,7 @@ import type {
   Solution,
 } from '../types'
 import { companyPageHref, companyPages } from './companyPages'
+import { pageHref } from '../lib/urls'
 
 export const retailServices: { id: string; name: string; description: string; icon: LucideIcon; accent: BrandAccent }[] = [
   { id: 'snapbilling', name: 'SnapBilling', description: 'Billing, inventory, and day-to-day retail operations.', icon: ReceiptText, accent: 'blue' },
@@ -127,6 +129,7 @@ export const navItems: NavItem[] = [
         href: companyPageHref(page.id),
         icon: page.icon,
       })),
+      { label: 'Snapbizz Data Suite', description: 'FMCG consumer transaction insights from POS data across India.', href: pageHref('data/'), icon: Database },
       { label: 'How It Works', description: 'From understanding your workflow to rollout and support.', href: '#how-it-works', icon: Layers },
       { label: 'Why SnapBizz', description: 'Flexible workflows, integrations, and merchant support.', href: '#why-us', icon: ShieldCheck },
     ],

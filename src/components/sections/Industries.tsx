@@ -5,6 +5,7 @@ import { industries } from '../../data/content'
 import type { BrandAccent, Industry } from '../../types'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
+import { siteHref } from '../../lib/urls'
 
 const gradients: Record<BrandAccent, string> = {
   blue: 'from-brand-blue to-[#1fc1e0]',
@@ -56,7 +57,7 @@ function TiltCard({ industry, index }: { industry: Industry; index: number }) {
       className="h-full"
     >
       <motion.a
-        href={`#/industry/${industry.id}`}
+        href={siteHref(`#/industry/${industry.id}`)}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
         style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}

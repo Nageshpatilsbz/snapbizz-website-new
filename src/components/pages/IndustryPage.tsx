@@ -6,6 +6,7 @@ import { Container } from '../ui/Container'
 import { Button } from '../ui/Button'
 import { FlowDiagram } from '../sections/SolutionFlow'
 import type { BrandAccent } from '../../types'
+import { SiteLink } from '../ui/SiteLink'
 
 const gradients: Record<BrandAccent, string> = {
   blue: 'from-brand-blue to-[#1fc1e0]',
@@ -46,9 +47,9 @@ export function IndustryPage({ id }: { id: string }) {
         <div className={`pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-linear-to-br ${gradient} opacity-20 blur-3xl`} />
         <Container className="relative grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div className="flex flex-col items-start gap-5">
-            <a href="#industries" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
+            <SiteLink href="#industries" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
               <ArrowLeft className="h-4 w-4" /> All industries
-            </a>
+            </SiteLink>
             <h1 tabIndex={-1} className="text-4xl font-bold focus:outline-none sm:text-5xl">{industry.title}</h1>
             <p className="text-xl font-medium text-ink-700">{detail.tagline}</p>
             <p className="max-w-xl leading-relaxed text-ink-500">{detail.overview}</p>
@@ -116,14 +117,14 @@ export function IndustryPage({ id }: { id: string }) {
           <h2 className="text-2xl font-bold sm:text-3xl">Explore other industries</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {others.map((o) => (
-              <a
+              <SiteLink
                 key={o.id}
                 href={`#/industry/${o.id}`}
                 className="flex cursor-pointer items-center justify-between rounded-xl border border-line bg-white px-4 py-3 text-sm font-medium transition hover:-translate-y-0.5 hover:shadow-card"
               >
                 {o.title}
                 <ArrowRight className="h-4 w-4 text-brand-blue" />
-              </a>
+              </SiteLink>
             ))}
           </div>
         </Container>

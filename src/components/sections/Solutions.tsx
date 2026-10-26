@@ -5,6 +5,8 @@ import { solutions } from '../../data/content'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
 import { SolutionFlow } from './SolutionFlow'
+import { SiteLink } from '../ui/SiteLink'
+import { solutionHref } from '../../lib/urls'
 
 const panelId = (id: string) => `solution-${id}`
 
@@ -17,11 +19,12 @@ const panelGradients = [
   'from-[#db4437] to-[#8f5bd6]',
 ]
 
-export function Solutions() {
-  const [activeId, setActiveId] = useState(solutions[0].id)
+export function Solutions({ solutionId }: { solutionId?: string }) {
+  const [activeId, setActiveId] = useState(solutionId ?? solutions[0].id)
   const [showTabs, setShowTabs] = useState(false)
 
   useEffect(() => {
+    if (solutionId) return
     const update = () => {
       const zone = document.getElementById('solution-panels')
       if (!zone) return
@@ -35,9 +38,10 @@ export function Solutions() {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-  }, [])
+  }, [solutionId])
 
   useEffect(() => {
+    if (solutionId) return
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -51,7 +55,7 @@ export function Solutions() {
       if (el) observer.observe(el)
     })
     return () => observer.disconnect()
-  }, [])
+  }, [solutionId])
 
   const goTo = (id: string) => {
     document.getElementById(panelId(id))?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -59,7 +63,7 @@ export function Solutions() {
 
   return (
     <section id="solutions" className="brand-wash bg-surface">
-      <div className="pt-24 sm:pt-28">
+      {!solutionId ? <div className="pt-24 sm:pt-28">
         <Container>
           <SectionHeading
             eyebrow="Solutions"
@@ -67,10 +71,10 @@ export function Solutions() {
             description="From independent stores to banks, fintechs, and multi-location enterprises, explore solutions built around everyday operations."
           />
         </Container>
-      </div>
+      </div> : null}
 
       <div id="solution-panels" className="relative mt-12">
-        <div
+        {!solutionId ? <div
           id="solution-tabs"
           className={`fixed inset-x-0 top-18 hidden min-[1390px]:block z-40 border-b border-line bg-white/95 px-6 py-2.5 shadow-md backdrop-blur transition-all duration-300 lg:px-8 ${
             showTabs ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-3 opacity-0'
@@ -104,9 +108,11 @@ export function Solutions() {
               )
             })}
           </div>
-        </div>
+        </div> : null}
 
-        {solutions.map((solution, index) => (
+        {solutions.filter((solution) => !solutionId || solution.id === solutionId).map((solution) => {
+          const index = solutions.findIndex((item) => item.id === solution.id)
+          return (
           <div
             key={solution.id}
             id={panelId(solution.id)}
@@ -206,13 +212,18 @@ export function Solutions() {
                         </div>
                       </div>
                     ) : null}
-                    <a
+                    <SiteLink
                       href="#contact"
                       className="group relative mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-blue-dark transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
                     >
                       {solution.cta}
                       <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                    </a>
+                    </SiteLink>
+                    {!solutionId ? (
+                      <a href={solutionHref(solution.id)} className="relative mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">
+                        Explore {solution.title} <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    ) : null}
                   </div>
 
                   <ul className="grid grid-rows-3 content-stretch gap-3 sm:grid-cols-2 lg:col-span-3">
@@ -250,7 +261,7 @@ export function Solutions() {
               </motion.div>
             </Container>
           </div>
-        ))}
+        )})}
       </div>
     </section>
   )

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { AlertCircle, Building2, CheckCircle2, Clock, Headset, Layers, Loader2, Send, ShieldCheck } from 'lucide-react'
+import { Building2, Clock, Headset, Layers, Send, ShieldCheck } from 'lucide-react'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { industryOptions, solutionOptions } from '../../data/content'
@@ -7,6 +7,8 @@ import type { ContactFormValues } from '../../types'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
 import { Select } from '../ui/Select'
+import { ContactOptions } from '../ui/ContactOptions'
+import { companyPageHref } from '../../data/companyPages'
 
 const initialValues: ContactFormValues = {
   fullName: '',
@@ -21,7 +23,7 @@ const initialValues: ContactFormValues = {
 }
 
 type Errors = Partial<Record<keyof ContactFormValues, string>>
-type Status = 'idle' | 'submitting' | 'success' | 'error'
+type Status = 'idle' | 'email-ready'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const phonePattern = /^[0-9+()\-\s]{7,15}$/
@@ -50,16 +52,6 @@ function validate(values: ContactFormValues): Errors {
   return errors
 }
 
-/**
- * NOTE: No backend/email service is configured yet. Replace this function with a real
- * API call (e.g. `fetch('/api/enquiries', { method: 'POST', body: JSON.stringify(values) })`)
- * once an enquiry-handling endpoint is available.
- */
-async function submitEnquiry(values: ContactFormValues): Promise<void> {
-  console.info('Business enquiry captured (no backend configured yet):', values)
-  await new Promise((resolve) => setTimeout(resolve, 600))
-}
-
 export function ContactForm() {
   const [values, setValues] = useState<ContactFormValues>(initialValues)
   const [errors, setErrors] = useState<Errors>({})
@@ -69,7 +61,7 @@ export function ContactForm() {
     setValues((previous) => ({ ...previous, [field]: value }))
   }
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const validationErrors = validate(values)
     setErrors(validationErrors)
@@ -78,14 +70,20 @@ export function ContactForm() {
       return
     }
 
-    setStatus('submitting')
-    try {
-      await submitEnquiry(values)
-      setStatus('success')
-      setValues(initialValues)
-    } catch {
-      setStatus('error')
-    }
+    const subject = 'Enquiry from Webpage'
+    const body = [
+      `Name: ${values.fullName.trim()}`,
+      `Email: ${values.businessEmail.trim()}`,
+      `Company: ${values.companyName.trim()}`,
+      `Phone: ${values.phoneNumber.trim()}`,
+      `Industry: ${values.industry === 'Custom' ? values.customReason.trim() : values.industry}`,
+      `Solution of interest: ${values.solutionOfInterest}`,
+      '',
+      'Requirements:',
+      values.requirements.trim(),
+    ].join('\n')
+    window.location.href = `mailto:market@snapbizz.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setStatus('email-ready')
   }
 
   const inputClasses =
@@ -121,6 +119,9 @@ export function ContactForm() {
               </li>
             ))}
           </ul>
+          <div className="mt-8">
+            <ContactOptions />
+          </div>
         </div>
 
         <motion.form
@@ -265,37 +266,21 @@ export function ContactForm() {
             <label htmlFor="consent" className="text-xs leading-relaxed text-ink-500">
               I agree to be contacted about my enquiry and understand my information will be used in
               accordance with SnapBizz&rsquo;s{' '}
-              <a href="#/company/privacy" className="font-medium text-brand-blue-dark underline underline-offset-2">Privacy Policy</a>.
+              <a href={companyPageHref('privacy')} className="font-medium text-brand-blue-dark underline underline-offset-2">Privacy Policy</a>.
             </label>
           </div>
           {errors.consent ? <p className="mt-1.5 text-xs text-brand-red">{errors.consent}</p> : null}
 
           <button
             type="submit"
-            disabled={status === 'submitting'}
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-blue to-brand-blue-dark px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 transition-all hover:-translate-y-0.5 hover:brightness-110 disabled:opacity-70"
           >
-            {status === 'submitting' ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Sending...
-              </>
-            ) : (
-              <>
-                Send Enquiry <Send className="h-4 w-4" />
-              </>
-            )}
+            Prepare Enquiry Email <Send className="h-4 w-4" />
           </button>
 
-          {status === 'success' ? (
-            <p className="mt-4 flex items-center gap-2 text-sm font-medium text-brand-green" role="status">
-              <CheckCircle2 className="h-4 w-4" /> Thank you! Your enquiry has been recorded locally &mdash; our
-              team will connect with you shortly once our enquiry handling is live.
-            </p>
-          ) : null}
-
-          {status === 'error' ? (
-            <p className="mt-4 flex items-center gap-2 text-sm font-medium text-brand-red" role="alert">
-              <AlertCircle className="h-4 w-4" /> Something went wrong. Please try again in a moment.
+          {status === 'email-ready' ? (
+            <p className="mt-4 text-sm font-medium text-ink-700" role="status">
+              Your email app should open with your enquiry ready to send. If it doesn&apos;t, email <a href="mailto:market@snapbizz.com" className="text-brand-blue-dark underline">market@snapbizz.com</a> or call <a href="tel:18001039780" className="text-brand-blue-dark underline">1800 103 9780</a>.
             </p>
           ) : null}
         </motion.form>
