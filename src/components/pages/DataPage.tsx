@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Database, GraduationCap, Landmark, ShoppingBasket, X } from 'lucide-react'
+import { ArrowRight, BarChart3, Database, GraduationCap, Landmark, Layers3, ShoppingBasket, Tags, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Button } from '../ui/Button'
@@ -103,21 +103,50 @@ export function DataPage() {
         </Container>
       </section>
 
-      <section className="bg-surface-soft py-16 sm:py-20">
+      <section aria-labelledby="data-overview-title" className="relative overflow-hidden border-y border-line bg-[linear-gradient(115deg,#f0f6ff_0%,#ffffff_55%,#f0faf5_100%)] py-14 sm:py-20">
         <Container>
-          <div className="grid gap-5 lg:grid-cols-[0.65fr_1.35fr]">
-            <div className="rounded-3xl border border-[#e6dcc8] bg-[#f5f0e6] p-7 shadow-sm sm:p-9">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#8a6a35]">POS Data India</p>
-              <h2 className="mt-4 text-2xl font-bold leading-snug text-[#263244] sm:text-3xl">
-                Snapbizz Consumer Transaction Data of FMCG Products - POS Data India
+          <div className="flex items-center gap-3 text-xs font-semibold text-brand-blue-dark">
+            <Database className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <p>POS DATA INDIA</p>
+            <span className="h-px w-10 bg-brand-blue/30" aria-hidden="true" />
+            <p className="font-medium text-ink-500">Consumer intelligence</p>
+          </div>
+          <div className="mt-7 grid gap-7 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+            <div className="min-w-0">
+              <h2 id="data-overview-title" className="max-w-lg text-3xl font-semibold leading-[1.2] tracking-normal text-ink sm:text-4xl">
+                FMCG consumer<br className="hidden sm:block" /> transaction data.<br />
+                <span className="text-brand-blue-dark">A clearer view of India.</span>
               </h2>
+              <p className="mt-5 max-w-sm text-sm leading-6 text-ink-500">Retail intelligence from the point of sale. Built around what consumers actually buy.</p>
             </div>
-            <div className="rounded-3xl border border-line bg-white p-7 shadow-sm sm:p-9">
-              <p className="text-lg leading-relaxed text-ink-700">
-                Snapbizz&apos;s FMCG Consumer Transaction Data is your gateway to comprehensive consumption analysis, enabling you to unravel trends and make informed decisions. Discover the pulse of the market and propel your strategies forward with the power of precise data insights.
+            <div className="min-w-0 lg:border-l lg:border-line lg:pl-10">
+              <p className="max-w-2xl text-lg leading-8 text-ink-700 sm:text-xl sm:leading-9">
+                Snapbizz&apos;s FMCG Consumer Transaction Data is your gateway to comprehensive consumption analysis, enabling you to unravel trends and make informed decisions.
               </p>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-ink-500">
+                Discover the pulse of the market and propel your strategies forward with the power of precise data insights.
+              </p>
+              <button type="button" onClick={openContactForm} className="group mt-6 inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-brand-blue-dark underline-offset-4 hover:underline">
+                Discuss your data needs
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" aria-hidden="true" />
+              </button>
             </div>
           </div>
+          <dl className="mt-10 grid gap-6 border-t border-line pt-7 sm:mt-12 sm:grid-cols-3 sm:gap-8">
+            {[
+              { label: 'Price dynamics', detail: 'Understand product pricing', icon: BarChart3, color: 'text-brand-blue-dark' },
+              { label: 'Purchase quantities', detail: 'Explore consumption patterns', icon: Layers3, color: 'text-brand-green' },
+              { label: 'Discount insights', detail: 'Examine transaction-level discounts', icon: Tags, color: 'text-brand-red' },
+            ].map(({ label, detail, icon: Icon, color }) => (
+              <div key={label} className="flex min-w-0 items-start gap-3">
+                <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} strokeWidth={1.6} aria-hidden="true" />
+                <div className="min-w-0">
+                  <dt className="text-sm font-semibold text-ink">{label}</dt>
+                  <dd className="mt-1 text-sm leading-6 text-ink-500">{detail}</dd>
+                </div>
+              </div>
+            ))}
+          </dl>
         </Container>
       </section>
 
