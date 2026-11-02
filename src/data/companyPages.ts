@@ -61,7 +61,7 @@ export const companyPages: CompanyPageContent[] = [
       { title: 'Can billing connect to payment collection?', body: 'Payment Collection & Reconciliation connects supported PC-based billing and APOS workflows to help match billing records with payments. Supported payment methods and ERP connections vary by configuration.' },
       { title: 'Can solutions be tailored to my industry?', body: 'Custom Enterprise Solutions support tailored branding, billing, and operational workflows. Explore the industry pages for examples, then discuss your specific requirements.' },
       { title: 'How do deployment and support work?', body: 'The process starts with understanding your workflow, followed by configuration and deployment. Training, onboarding, and support are defined with the partner for the selected solution.' },
-      { title: 'Where can I find pricing or request a demonstration?', body: 'Use the Contact section to describe your requirements. The current enquiry form is a local demonstration only and does not send an enquiry; a live contact channel will be added before launch.' },
+      { title: 'Where can I find pricing or request a demonstration?', body: 'Use the Contact section to describe your requirements and submit an enquiry. Our team will follow up to discuss pricing or arrange a demonstration.' },
     ],
   },
   {

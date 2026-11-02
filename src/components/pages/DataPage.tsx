@@ -5,6 +5,8 @@ import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { ContactOptions } from '../ui/ContactOptions'
 import { SiteLink } from '../ui/SiteLink'
+import { submitWebsiteLead } from '../../lib/websiteLeads'
+import { companyPageHref } from '../../data/companyPages'
 
 const audiences = [
   {
@@ -31,6 +33,8 @@ export function DataPage() {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const [contactOpen, setContactOpen] = useState(false)
   const [formNotice, setFormNotice] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submissionFailed, setSubmissionFailed] = useState(false)
 
   useEffect(() => {
     const dialog = dialogRef.current
@@ -39,21 +43,35 @@ export function DataPage() {
     if (!contactOpen && dialog.open) dialog.close()
   }, [contactOpen])
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
-    const name = String(formData.get('name') ?? '').trim()
-    const email = String(formData.get('email') ?? '').trim()
-    const phone = String(formData.get('phone') ?? '').trim()
-    const message = String(formData.get('message') ?? '').trim()
-    const subject = 'Enquiry from Webpage'
-    const body = [`Name: ${name}`, `Email: ${email}`, `Phone: ${phone}`, '', 'Message:', message].join('\n')
-    window.location.href = `mailto:market@snapbizz.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setFormNotice('Your email app should open with your enquiry ready to send. Please send the email to complete your enquiry.')
+    setIsSubmitting(true)
+    setFormNotice('')
+    setSubmissionFailed(false)
+    try {
+      await submitWebsiteLead({
+        fullName: String(formData.get('fullName') ?? '').trim(),
+        businessEmail: String(formData.get('businessEmail') ?? '').trim(),
+        companyName: String(formData.get('companyName') ?? '').trim(),
+        phoneNumber: String(formData.get('phoneNumber') ?? '').trim(),
+        industry: String(formData.get('industry') ?? '').trim(),
+        solutionOfInterest: String(formData.get('solutionOfInterest') ?? '').trim(),
+        requirements: String(formData.get('requirements') ?? '').trim(),
+        consentGiven: formData.get('consentGiven') === 'on',
+      })
+      setFormNotice('Thank you. Your enquiry has been submitted, and our team will be in touch.')
+    } catch {
+      setSubmissionFailed(true)
+      setFormNotice("We couldn't submit your enquiry. Please try again or email market@snapbizz.com.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const openContactForm = () => {
     setFormNotice('')
+    setSubmissionFailed(false)
     setContactOpen(true)
   }
 
@@ -218,23 +236,42 @@ export function DataPage() {
           </div>
           <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
             <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-name">
-              Name
-              <input id="data-contact-name" name="name" type="text" autoComplete="name" required className={`${inputClasses} mt-1.5`} />
+              Full name
+              <input id="data-contact-name" name="fullName" type="text" autoComplete="name" required className={`${inputClasses} mt-1.5`} />
             </label>
             <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-email">
-              Email
-              <input id="data-contact-email" name="email" type="email" autoComplete="email" required className={`${inputClasses} mt-1.5`} />
+              Business email
+              <input id="data-contact-email" name="businessEmail" type="email" autoComplete="email" required className={`${inputClasses} mt-1.5`} />
+            </label>
+            <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-company">
+              Company name
+              <input id="data-contact-company" name="companyName" type="text" autoComplete="organization" required className={`${inputClasses} mt-1.5`} />
             </label>
             <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-phone">
-              Phone
-              <input id="data-contact-phone" name="phone" type="tel" autoComplete="tel" required className={`${inputClasses} mt-1.5`} />
+              Phone number
+              <input id="data-contact-phone" name="phoneNumber" type="tel" autoComplete="tel" required className={`${inputClasses} mt-1.5`} />
             </label>
-            <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-message">
-              Message
-              <textarea id="data-contact-message" name="message" rows={4} required className={`${inputClasses} mt-1.5`} />
+            <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-industry">
+              Industry
+              <input id="data-contact-industry" name="industry" type="text" required className={`${inputClasses} mt-1.5`} />
             </label>
-            {formNotice ? <p role="alert" className="rounded-xl border border-brand-yellow/40 bg-brand-yellow/10 p-3 text-sm text-ink-700">{formNotice}</p> : null}
-            <Button type="submit" className="w-full">Send enquiry</Button>
+            <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-solution">
+              Solution of interest
+              <input id="data-contact-solution" name="solutionOfInterest" type="text" required className={`${inputClasses} mt-1.5`} />
+            </label>
+            <label className="block text-sm font-medium text-ink-700" htmlFor="data-contact-requirements">
+              Requirements
+              <textarea id="data-contact-requirements" name="requirements" rows={4} required className={`${inputClasses} mt-1.5`} />
+            </label>
+            <label className="flex items-start gap-3 text-xs leading-relaxed text-ink-500">
+              <input name="consentGiven" type="checkbox" required className="mt-0.5 h-4 w-4 shrink-0 rounded border-line text-brand-blue focus:ring-brand-blue/30" />
+              <span>
+                I agree to be contacted about my enquiry and understand my information will be used in accordance with SnapBizz&apos;s{' '}
+                <a href={companyPageHref('privacy')} className="font-medium text-brand-blue-dark underline underline-offset-2">Privacy Policy</a>.
+              </span>
+            </label>
+            {formNotice ? <p role={submissionFailed ? 'alert' : 'status'} className="rounded-xl border border-brand-yellow/40 bg-brand-yellow/10 p-3 text-sm text-ink-700">{formNotice}</p> : null}
+            <Button type="submit" disabled={isSubmitting} className="w-full">{isSubmitting ? 'Sending enquiry…' : 'Send enquiry'}</Button>
           </form>
         </div>
       </dialog>

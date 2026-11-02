@@ -9,6 +9,7 @@ import { SectionHeading } from '../ui/SectionHeading'
 import { Select } from '../ui/Select'
 import { ContactOptions } from '../ui/ContactOptions'
 import { companyPageHref } from '../../data/companyPages'
+import { submitWebsiteLead } from '../../lib/websiteLeads'
 
 const initialValues: ContactFormValues = {
   fullName: '',
@@ -23,7 +24,7 @@ const initialValues: ContactFormValues = {
 }
 
 type Errors = Partial<Record<keyof ContactFormValues, string>>
-type Status = 'idle' | 'email-ready'
+type Status = 'idle' | 'submitting' | 'submitted' | 'error'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const phonePattern = /^[0-9+()\-\s]{7,15}$/
@@ -61,7 +62,7 @@ export function ContactForm() {
     setValues((previous) => ({ ...previous, [field]: value }))
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const validationErrors = validate(values)
     setErrors(validationErrors)
@@ -70,20 +71,22 @@ export function ContactForm() {
       return
     }
 
-    const subject = 'Enquiry from Webpage'
-    const body = [
-      `Name: ${values.fullName.trim()}`,
-      `Email: ${values.businessEmail.trim()}`,
-      `Company: ${values.companyName.trim()}`,
-      `Phone: ${values.phoneNumber.trim()}`,
-      `Industry: ${values.industry === 'Custom' ? values.customReason.trim() : values.industry}`,
-      `Solution of interest: ${values.solutionOfInterest}`,
-      '',
-      'Requirements:',
-      values.requirements.trim(),
-    ].join('\n')
-    window.location.href = `mailto:market@snapbizz.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    setStatus('email-ready')
+    setStatus('submitting')
+    try {
+      await submitWebsiteLead({
+        fullName: values.fullName.trim(),
+        businessEmail: values.businessEmail.trim(),
+        companyName: values.companyName.trim(),
+        phoneNumber: values.phoneNumber.trim(),
+        industry: values.industry === 'Custom' ? values.customReason.trim() : values.industry,
+        solutionOfInterest: values.solutionOfInterest,
+        requirements: values.requirements.trim(),
+        consentGiven: values.consent,
+      })
+      setStatus('submitted')
+    } catch {
+      setStatus('error')
+    }
   }
 
   const inputClasses =
@@ -273,14 +276,20 @@ export function ContactForm() {
 
           <button
             type="submit"
+            disabled={status === 'submitting'}
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-blue to-brand-blue-dark px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-blue/30 transition-all hover:-translate-y-0.5 hover:brightness-110 disabled:opacity-70"
           >
-            Prepare Enquiry Email <Send className="h-4 w-4" />
+            {status === 'submitting' ? 'Sending enquiry…' : 'Send enquiry'} <Send className="h-4 w-4" />
           </button>
 
-          {status === 'email-ready' ? (
+          {status === 'submitted' ? (
             <p className="mt-4 text-sm font-medium text-ink-700" role="status">
-              Your email app should open with your enquiry ready to send. If it doesn&apos;t, email <a href="mailto:market@snapbizz.com" className="text-brand-blue-dark underline">market@snapbizz.com</a> or call <a href="tel:18001039780" className="text-brand-blue-dark underline">1800 103 9780</a>.
+              Thank you. Your enquiry has been submitted, and our team will be in touch.
+            </p>
+          ) : null}
+          {status === 'error' ? (
+            <p className="mt-4 text-sm font-medium text-brand-red" role="alert">
+              We couldn&apos;t submit your enquiry. Please try again or email <a href="mailto:market@snapbizz.com" className="underline">market@snapbizz.com</a>.
             </p>
           ) : null}
         </motion.form>
