@@ -94,15 +94,15 @@ function TiltCard({ industry, index }: { industry: Industry; index: number }) {
 
 export function Industries() {
   return (
-    <section id="industries" className="brand-wash bg-surface-soft py-24 sm:py-28">
-      <Container className="flex flex-col gap-14">
+    <section id="industries" className="brand-wash bg-surface-soft py-12 sm:py-28">
+      <Container className="flex flex-col gap-8 sm:gap-14">
         <SectionHeading
           eyebrow="Industries"
           title="Purpose-Built Solutions for Every Workflow"
           description="Each industry has its own billing, collection, and reporting needs. Our platform adapts to every one of them."
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {industries.map((industry, index) => (
             <TiltCard key={industry.id} industry={industry} index={index} />
           ))}

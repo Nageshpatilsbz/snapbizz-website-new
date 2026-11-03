@@ -43,9 +43,9 @@ export function IndustryPage({ id }: { id: string }) {
 
   return (
     <>
-      <section className={`relative overflow-hidden bg-linear-to-br ${tints[industry.accent]} pt-32 pb-20`}>
+      <section className={`relative overflow-hidden bg-linear-to-br ${tints[industry.accent]} pb-12 pt-24 sm:pb-20 sm:pt-32`}>
         <div className={`pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-linear-to-br ${gradient} opacity-20 blur-3xl`} />
-        <Container className="relative grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+        <Container className="relative grid items-center gap-8 sm:gap-12 lg:grid-cols-[1.2fr_1fr]">
           <div className="flex flex-col items-start gap-5">
             <SiteLink href="#industries" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
               <ArrowLeft className="h-4 w-4" /> All industries
@@ -56,7 +56,7 @@ export function IndustryPage({ id }: { id: string }) {
             <Button href="#contact">Request a Demo</Button>
           </div>
 
-          <div className="relative mx-auto flex h-72 w-72 items-center justify-center sm:h-80 sm:w-80">
+          <div className="relative mx-auto flex h-60 w-full max-w-72 items-center justify-center sm:h-80 sm:w-80 sm:max-w-none">
             <div className={`absolute inset-0 rounded-full bg-linear-to-br ${gradient} opacity-15`} />
             <div className="absolute inset-8 rounded-full border-2 border-dashed border-ink-300" />
             <motion.div
@@ -84,10 +84,10 @@ export function IndustryPage({ id }: { id: string }) {
         </Container>
       </section>
 
-      <section className="brand-wash bg-white py-20">
+      <section className="brand-wash bg-white py-12 sm:py-20">
         <Container>
           <h2 className="text-3xl font-bold sm:text-4xl">What you get</h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
             {detail.features.map((f, i) => {
               const FIcon = f.icon
               return (
@@ -112,7 +112,7 @@ export function IndustryPage({ id }: { id: string }) {
         </Container>
       </section>
 
-      <section className="brand-wash bg-surface-soft py-20">
+      <section className="brand-wash bg-surface-soft py-12 sm:py-20">
         <Container>
           <h2 className="text-2xl font-bold sm:text-3xl">Explore other industries</h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

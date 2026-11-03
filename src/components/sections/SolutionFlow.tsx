@@ -77,7 +77,7 @@ export function SolutionFlow({ solutionId }: { solutionId: string }) {
 export function FlowDiagram({ steps, title = 'How it works' }: { steps: Step[]; title?: string }) {
   return (
     <div
-      className="mt-10 rounded-3xl border border-brand-blue/25 bg-brand-blue-light px-3 py-8 shadow-sm sm:px-8 lg:py-12"
+      className="mt-6 rounded-3xl border border-brand-blue/25 bg-brand-blue-light px-2 py-5 shadow-sm sm:mt-10 sm:px-8 sm:py-8 lg:py-12"
       role="img"
       aria-label={`${title}: ${steps.map((step) => step.label).join(', then ')}`}
     >
@@ -85,18 +85,18 @@ export function FlowDiagram({ steps, title = 'How it works' }: { steps: Step[]; 
         {title}
       </p>
       <div className="relative grid grid-cols-4">
-        <div className="absolute inset-x-[12.5%] top-8 h-1 rounded-full bg-brand-blue/20" aria-hidden="true">
+        <div className="absolute inset-x-[12.5%] top-6 h-1 rounded-full bg-brand-blue/20 sm:top-8" aria-hidden="true">
           <span className="flow-dot absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-linear-to-r from-brand-blue to-brand-green shadow-md shadow-brand-blue/50" />
         </div>
         {steps.map((step, index) => (
-          <div key={step.label} className="relative flex flex-col items-center gap-2 text-center">
+          <div key={step.label} className="relative flex min-w-0 flex-col items-center gap-2 px-1 text-center">
             <span
-              className="flow-node relative flex h-16 w-16 items-center justify-center rounded-full border-2 border-line bg-white text-ink-500"
+              className="flow-node relative flex h-12 w-12 items-center justify-center rounded-full border-2 border-line bg-white text-ink-500 sm:h-16 sm:w-16"
               style={{ animationDelay: `${index * 1.6}s` }}
             >
-              <step.icon className="h-7 w-7" />
+              <step.icon className="h-5 w-5 sm:h-7 sm:w-7" />
             </span>
-            <span className="text-sm font-semibold text-ink sm:text-lg">{step.label}</span>
+            <span className="max-w-full text-xs font-semibold wrap-break-word text-ink sm:text-lg">{step.label}</span>
             <span className="hidden max-w-44 text-sm leading-snug text-ink-500 sm:block">{step.detail}</span>
           </div>
         ))}

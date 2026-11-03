@@ -36,15 +36,15 @@ export function Platform() {
   }
 
   return (
-    <section id="platform" className="brand-wash bg-surface py-24 sm:py-28">
-      <Container className="flex flex-col gap-14">
+    <section id="platform" className="brand-wash bg-surface py-12 sm:py-28">
+      <Container className="flex flex-col gap-8 sm:gap-14">
         <SectionHeading
           eyebrow="Platform"
           title="More Than Billing: A Connected Retail Ecosystem"
           description="Connect store operations, digital commerce, customer engagement, and business insights with services suited to your deployment."
         />
 
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div className="grid gap-6 sm:gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <motion.div
             initial={reducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -187,7 +187,7 @@ export function Platform() {
               role="tabpanel"
               aria-labelledby={`${explorerId}-tab-${selectedIndex}`}
               tabIndex={0}
-              className="mt-6 min-h-80 border-t border-line pt-5 sm:min-h-72"
+              className="mt-5 border-t border-line pt-5 sm:mt-6 sm:min-h-72"
             >
               <motion.div
                 key={selectedFeature.title}
@@ -229,7 +229,7 @@ export function Platform() {
               {retailServices.length} connected services
             </span>
           </div>
-          <ul className="mt-7 grid auto-rows-fr gap-3 sm:grid-cols-2 lg:grid-cols-5 xl:gap-4">
+          <ul className="mt-5 grid gap-3 sm:mt-7 sm:auto-rows-fr sm:grid-cols-2 lg:grid-cols-5 xl:gap-4">
             {retailServices.map((service, index) => (
               <motion.li
                 key={service.name}

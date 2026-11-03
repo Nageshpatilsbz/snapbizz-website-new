@@ -31,12 +31,12 @@ export function CompanyPage({ id }: { id: string }) {
 
   return (
     <>
-      <section className="brand-wash bg-surface pb-16 pt-32 sm:pb-20">
+      <section className="brand-wash bg-surface pb-10 pt-24 sm:pb-20 sm:pt-32">
         <Container>
           <SiteLink href="#top" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to home
           </SiteLink>
-          <div className="mt-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-blue shadow-soft">
+          <div className="mt-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-brand-blue shadow-soft sm:mt-8">
             <Icon className="h-7 w-7" aria-hidden="true" />
           </div>
           <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">{page.label}</p>
@@ -49,8 +49,8 @@ export function CompanyPage({ id }: { id: string }) {
           ) : null}
         </Container>
       </section>
-      <section className="brand-wash bg-surface-soft py-16 sm:py-20">
-        <Container className="grid gap-10 lg:grid-cols-[1fr_17rem] lg:items-start">
+      <section className="brand-wash bg-surface-soft py-10 sm:py-20">
+        <Container className="grid gap-6 sm:gap-10 lg:grid-cols-[1fr_17rem] lg:items-start">
           <div className="min-w-0 space-y-5">
             {page.id === 'privacy' ? <PrivacyPolicy /> : page.id === 'terms' ? <TermsAndConditions /> : page.sections.map((section, index) => page.id === 'faq' ? (
               <details key={section.title} className="group rounded-2xl border border-line bg-white p-6 shadow-sm">

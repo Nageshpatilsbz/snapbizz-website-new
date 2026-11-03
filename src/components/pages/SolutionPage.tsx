@@ -11,7 +11,7 @@ export function SolutionPage({ id }: { id: string }) {
 
   return (
     <>
-      <section className="brand-wash bg-surface pb-12 pt-32">
+      <section className="brand-wash bg-surface pb-8 pt-24 sm:pb-12 sm:pt-32">
         <Container>
           <SiteLink href="#solutions" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" /> All solutions
@@ -23,7 +23,7 @@ export function SolutionPage({ id }: { id: string }) {
         </Container>
       </section>
       <Solutions solutionId={id} />
-      <section className="brand-wash bg-surface py-16">
+      <section className="brand-wash bg-surface py-10 sm:py-16">
         <Container>
           <h2 className="text-2xl font-semibold">Explore related solutions</h2>
           <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

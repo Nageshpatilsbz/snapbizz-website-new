@@ -5,7 +5,7 @@ import { Container } from '../ui/Container'
 
 export function CtaSection() {
   return (
-    <section className="relative overflow-hidden     bg-linear-to-br from-[#0b2a6b] via-brand-blue-dark to-[#0a7a6a] py-20 sm:py-24">
+    <section className="relative overflow-hidden bg-linear-to-br from-[#0b2a6b] via-brand-blue-dark to-[#0a7a6a] py-12 sm:py-24">
       <div
             className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(50%_70%_at_85%_0%,rgba(244,180,0,0.22),transparent_60%)]"
         aria-hidden="true"

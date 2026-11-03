@@ -1,41 +1,15 @@
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion'
-import { useRef, type ReactNode } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { reasons } from '../../data/content'
 import { AccentIcon, accentBgClass, accentSoftClass, accentTextClass } from '../ui/AccentIcon'
 import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
 
-function ReasonReveal({ index, progress, children }: {
-  index: number
-  progress: MotionValue<number>
-  children: ReactNode
-}) {
-  const reduceMotion = useReducedMotion()
-  const range = [index / reasons.length, (index + 1) / reasons.length]
-  const opacity = useTransform(progress, range, [0, 1])
-  const y = useTransform(progress, range, [32, 0])
-  const rotateX = useTransform(progress, range, [6, 0])
-
-  return (
-    <motion.li
-      style={reduceMotion ? { opacity: 1, y: 0, rotateX: 0 } : { opacity, y, rotateX }}
-      className="h-full"
-    >
-      {children}
-    </motion.li>
-  )
-}
-
 export function WhyChooseUs() {
-  const gridRef = useRef<HTMLUListElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: gridRef,
-    offset: ['start 92%', 'end 75%'],
-  })
+  const reducedMotion = useReducedMotion()
 
   return (
-    <section id="why-us" className="brand-wash relative isolate flex min-h-screen items-center overflow-hidden bg-surface-soft py-24 sm:py-28">
-      <Container className="flex w-full flex-col gap-12 sm:gap-14">
+    <section id="why-us" className="brand-wash relative isolate flex items-center overflow-hidden bg-surface-soft py-12 sm:py-28 lg:min-h-screen">
+      <Container className="flex w-full flex-col gap-8 sm:gap-14">
         <SectionHeading
           eyebrow="Why Choose Us"
           title="Built Around Practical Business Value"
@@ -43,15 +17,17 @@ export function WhyChooseUs() {
         />
 
         <ul
-          ref={gridRef}
-          className="relative grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          className="relative grid gap-4 sm:auto-rows-fr sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
           style={{ perspective: 1200 }}
         >
           {reasons.map((reason, index) => (
-            <ReasonReveal
+            <motion.li
               key={reason.title}
-              index={index}
-              progress={scrollYProgress}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.4 }}
+              className="h-full"
             >
               <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white bg-white p-6 shadow-[0_2px_4px_rgba(15,23,42,0.02),0_12px_32px_-16px_rgba(15,23,42,0.18)] ring-1 ring-ink/5 transition-[transform,box-shadow] duration-300 hover:shadow-[0_8px_16px_-8px_rgba(15,23,42,0.1),0_28px_48px_-20px_rgba(15,23,42,0.24)] motion-safe:hover:-translate-y-1.5 sm:p-7">
                 <div
@@ -67,7 +43,7 @@ export function WhyChooseUs() {
                   strokeWidth={1}
                   aria-hidden="true"
                 />
-                <div className="relative mb-6 flex items-center justify-between">
+                <div className="relative mb-4 flex items-center justify-between sm:mb-6">
                   <span className="rounded-2xl bg-white p-1.5 shadow-[0_4px_12px_rgba(15,23,42,0.08)] ring-1 ring-ink/5 transition-transform duration-300 motion-safe:group-hover:-rotate-6 motion-safe:group-hover:scale-105">
                     <AccentIcon icon={reason.icon} accent={reason.accent} className="rounded-xl" />
                   </span>
@@ -81,7 +57,7 @@ export function WhyChooseUs() {
                   <span className={`absolute inset-y-0 left-0 w-10 transition-[width] duration-500 group-hover:w-20 ${accentBgClass[reason.accent]}`} />
                 </div>
               </article>
-            </ReasonReveal>
+            </motion.li>
           ))}
         </ul>
       </Container>

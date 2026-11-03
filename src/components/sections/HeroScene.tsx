@@ -93,7 +93,7 @@ export default function HeroScene() {
       <div
         role="img"
         aria-label="Connected SnapBizz ecosystem: Turbo Android POS and Neo Windows POS linked to bank and fintech partners, inventory, online orders, digital payments, and business analytics"
-        className="relative aspect-7/6 min-h-104 w-full select-none sm:min-h-0"
+        className="relative aspect-7/6 min-h-80 w-full select-none sm:min-h-0"
       >
         <div
           className="absolute inset-[6%] rounded-full bg-[radial-gradient(closest-side,rgba(23,101,238,0.16),rgba(0,168,120,0.07)_60%,transparent)]"
@@ -128,7 +128,7 @@ export default function HeroScene() {
         {nodes.map((node, index) => (
           <div
             key={node.title}
-            className="hero-float absolute left-(--x) top-(--y) lg:left-(--lx) lg:top-(--ly) motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2"
+            className="hero-float absolute left-[clamp(2.5rem,var(--x),calc(100%-2.5rem))] top-(--y) sm:left-(--x) lg:left-(--lx) lg:top-(--ly) motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2"
             style={{
               '--x': `${node.x}%`,
               '--y': `${node.y}%`,

@@ -95,11 +95,11 @@ export function ContactForm() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen items-center overflow-hidden bg-linear-to-br from-brand-blue-light via-white to-[#e6f6ee] py-20"
+      className="relative flex items-center overflow-hidden bg-linear-to-br from-brand-blue-light via-white to-[#e6f6ee] py-12 sm:py-20 lg:min-h-screen"
     >
       <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-brand-blue/15 blur-3xl" aria-hidden="true" />
       <div className="pointer-events-none absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-brand-green/15 blur-3xl" aria-hidden="true" />
-      <Container className="relative grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
+      <Container className="relative grid gap-6 sm:gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-16">
         <div>
           <SectionHeading
             align="left"
@@ -134,9 +134,9 @@ export function ContactForm() {
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5 }}
-          className="overflow-hidden rounded-3xl border border-white bg-white/90 p-6 shadow-[0_30px_70px_-30px_rgba(42,99,204,0.45)] backdrop-blur sm:p-8"
+          className="overflow-hidden rounded-3xl border border-white bg-white/90 p-5 shadow-[0_30px_70px_-30px_rgba(42,99,204,0.45)] backdrop-blur sm:p-8"
         >
-          <div className="-mx-6 -mt-6 mb-6 h-1.5 bg-linear-to-r from-brand-green via-brand-blue via-40% to-brand-yellow sm:-mx-8 sm:-mt-8" aria-hidden="true" />
+          <div className="-mx-5 -mt-5 mb-6 h-1.5 bg-linear-to-r from-brand-green via-brand-blue via-40% to-brand-yellow sm:-mx-8 sm:-mt-8" aria-hidden="true" />
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Full Name" error={errors.fullName} htmlFor="fullName">
               <input

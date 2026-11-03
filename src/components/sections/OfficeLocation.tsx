@@ -11,7 +11,7 @@ const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapQ
 
 export function OfficeLocation() {
   return (
-    <section id="office-location" aria-labelledby="office-location-heading" className="brand-wash scroll-mt-24 bg-surface py-16 sm:py-20">
+    <section id="office-location" aria-labelledby="office-location-heading" className="brand-wash scroll-mt-24 bg-surface py-10 sm:py-20">
       <Container>
         <div className="grid overflow-hidden rounded-3xl border border-line bg-white shadow-soft lg:grid-cols-[0.85fr_1.15fr]">
           <div className="flex flex-col items-start p-6 sm:p-8 lg:p-10">
@@ -55,7 +55,7 @@ export function OfficeLocation() {
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            className="h-72 w-full border-0 sm:h-80 lg:h-full lg:min-h-88"
+            className="h-56 w-full border-0 sm:h-80 lg:h-full lg:min-h-88"
           />
         </div>
       </Container>

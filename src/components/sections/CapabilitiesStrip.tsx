@@ -26,7 +26,7 @@ export function CapabilitiesStrip() {
     <section
       ref={sectionRef}
       aria-label="SnapBizz capabilities"
-      className="brand-wash relative border-y border-line bg-surface-soft py-10 sm:py-14"
+      className="brand-wash relative border-y border-line bg-surface-soft py-6 sm:py-14"
     >
       <motion.div
         aria-hidden="true"
@@ -34,7 +34,7 @@ export function CapabilitiesStrip() {
         className="absolute inset-x-0 top-0 h-0.5 origin-left bg-linear-to-r from-brand-blue via-brand-green to-brand-yellow"
       />
       <Container>
-        <div className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-5 pt-3 lg:mx-0 lg:grid lg:grid-cols-5 lg:gap-4 lg:overflow-visible lg:px-0">
+        <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-5 pt-3 sm:-mx-6 sm:px-6 lg:mx-0 lg:grid lg:grid-cols-5 lg:gap-4 lg:overflow-visible lg:px-0">
           {capabilities.map((capability, index) => (
             <motion.a
               key={capability.label}
@@ -45,7 +45,7 @@ export function CapabilitiesStrip() {
               transition={{ type: 'spring', stiffness: 160, damping: 22, delay: reducedMotion ? 0 : index * 0.08 }}
               whileHover={reducedMotion ? undefined : 'hover'}
               variants={{ hover: { y: -6, transition: { type: 'spring', stiffness: 300, damping: 22, delay: 0 } } }}
-              className="group relative flex min-h-60 w-64 shrink-0 snap-center flex-col overflow-hidden rounded-lg border border-line bg-white p-6 transition-shadow duration-300 hover:shadow-card focus-visible:shadow-card lg:w-auto lg:min-w-0"
+              className="group relative flex w-64 shrink-0 snap-center flex-col overflow-hidden rounded-lg border border-line bg-white p-5 transition-shadow duration-300 hover:shadow-card focus-visible:shadow-card sm:min-h-60 sm:p-6 lg:w-auto lg:min-w-0"
             >
               <div className="flex items-center justify-between">
                 <motion.span

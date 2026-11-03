@@ -24,7 +24,7 @@ export function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`flex max-w-2xl flex-col gap-4 ${alignment} ${className}`}
+      className={`flex max-w-2xl flex-col gap-3 sm:gap-4 ${alignment} ${className}`}
     >
       {eyebrow ? (
         <span className="inline-flex items-center gap-2 rounded-full bg-brand-blue-light px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-blue-dark">

@@ -63,7 +63,7 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
 
   return (
     <section id="solutions" className="brand-wash bg-surface">
-      {!solutionId ? <div className="pt-24 sm:pt-28">
+      {!solutionId ? <div className="pt-12 sm:pt-28">
         <Container>
           <SectionHeading
             eyebrow="Solutions"
@@ -73,7 +73,7 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
         </Container>
       </div> : null}
 
-      <div id="solution-panels" className="relative mt-12">
+      <div id="solution-panels" className="relative mt-6 sm:mt-12">
         {!solutionId ? <div
           id="solution-tabs"
           className={`fixed inset-x-0 top-18 hidden min-[1390px]:block z-40 border-b border-line bg-white/95 px-6 py-2.5 shadow-md backdrop-blur transition-all duration-300 lg:px-8 ${
@@ -117,7 +117,7 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
             key={solution.id}
             id={panelId(solution.id)}
             data-solution={solution.id}
-            className={`brand-wash flex min-h-screen items-center pb-10 pt-24 min-[1390px]:pt-36 ${
+            className={`brand-wash flex scroll-mt-18 items-center py-8 sm:pb-10 sm:pt-24 lg:min-h-screen min-[1390px]:pt-36 ${
               index % 2 === 0 ? 'bg-surface-soft' : 'bg-white'
             }`}
           >
@@ -226,7 +226,7 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
                     ) : null}
                   </div>
 
-                  <ul className="grid grid-rows-3 content-stretch gap-3 sm:grid-cols-2 lg:col-span-3">
+                  <ul className="grid content-stretch gap-3 sm:grid-cols-2 sm:grid-rows-3 lg:col-span-3">
                     {solution.features.map((feature, fi) => (
                       <li
                         key={feature}
@@ -251,7 +251,12 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
                 {activeId === solution.id ? (
                   <SolutionFlow key={solution.id} solutionId={solution.id} />
                 ) : (
-                  <div className="mt-10 h-48" aria-hidden="true" />
+                  <>
+                    <div className="lg:hidden">
+                      <SolutionFlow solutionId={solution.id} />
+                    </div>
+                    <div className="mt-10 hidden h-48 lg:block" aria-hidden="true" />
+                  </>
                 )}
 
                 <p className="mt-6 text-xs leading-relaxed text-ink-500">

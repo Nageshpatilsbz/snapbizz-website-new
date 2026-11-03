@@ -85,12 +85,12 @@ export function DataPage() {
 
   return (
     <>
-      <section className="brand-wash bg-surface pb-16 pt-32 sm:pb-20">
+      <section className="brand-wash bg-surface pb-10 pt-24 sm:pb-20 sm:pt-32">
         <Container>
           <SiteLink href="#top" className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue-dark">
             <ArrowRight className="h-4 w-4 rotate-180" aria-hidden="true" /> Back to home
           </SiteLink>
-          <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="mt-6 grid items-center gap-6 sm:mt-10 sm:gap-10 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">Snapbizz Data Suite</p>
               <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
@@ -106,7 +106,7 @@ export function DataPage() {
                 Contact us <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Button>
             </div>
-            <div className="rounded-3xl border border-[#263b57] bg-[#14243a] p-8 text-white shadow-[0_20px_50px_-24px_rgba(20,36,58,0.55)] sm:p-10">
+            <div className="rounded-3xl border border-[#263b57] bg-[#14243a] p-5 text-white shadow-[0_20px_50px_-24px_rgba(20,36,58,0.55)] sm:p-10">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#c6a76a]/40 bg-[#c6a76a]/15 text-[#e4c98f]">
                 <Database className="h-7 w-7" aria-hidden="true" />
               </div>
@@ -121,9 +121,9 @@ export function DataPage() {
         </Container>
       </section>
 
-      <section aria-labelledby="data-overview-title" className="relative overflow-hidden border-y border-line bg-[linear-gradient(115deg,#f0f6ff_0%,#ffffff_55%,#f0faf5_100%)] py-14 sm:py-20">
+      <section aria-labelledby="data-overview-title" className="relative overflow-hidden border-y border-line bg-[linear-gradient(115deg,#f0f6ff_0%,#ffffff_55%,#f0faf5_100%)] py-10 sm:py-20">
         <Container>
-          <div className="flex items-center gap-3 text-xs font-semibold text-brand-blue-dark">
+          <div className="flex flex-wrap items-center gap-3 text-xs font-semibold text-brand-blue-dark">
             <Database className="h-4 w-4 shrink-0" aria-hidden="true" />
             <p>POS DATA INDIA</p>
             <span className="h-px w-10 bg-brand-blue/30" aria-hidden="true" />
@@ -168,8 +168,8 @@ export function DataPage() {
         </Container>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <Container className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
+      <section className="bg-white py-10 sm:py-20">
+        <Container className="grid gap-6 sm:gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">Consumer Transaction Data</p>
             <h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">Unlock a treasure trove of retail intelligence.</h2>
@@ -188,15 +188,15 @@ export function DataPage() {
         </Container>
       </section>
 
-      <section className="brand-wash bg-surface-soft py-16 sm:py-20">
+      <section className="brand-wash bg-surface-soft py-10 sm:py-20">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">Built for decision-makers</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Who can buy our Data?</h2>
           </div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:mt-10 sm:gap-5 lg:grid-cols-3">
             {audiences.map(({ title, icon: Icon, description }) => (
-              <article key={title} className="rounded-3xl border border-line bg-white p-7 shadow-sm sm:p-8">
+              <article key={title} className="rounded-3xl border border-line bg-white p-5 shadow-sm sm:p-8">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-blue-light text-brand-blue-dark">
                   <Icon className="h-6 w-6" aria-hidden="true" />
                 </span>

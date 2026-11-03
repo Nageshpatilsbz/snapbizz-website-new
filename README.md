@@ -18,6 +18,15 @@ Pages under your GitHub plan; public repositories can use Pages on GitHub Free.
 Use Node.js 22.12+ or Node.js 24. Run `npm ci`, then `npm run dev`.
 Run `npm run build` to build the production site.
 
+### Responsive layout
+
+Below 640px, sections use compact vertical spacing and 16px page gutters.
+Full-screen presentation heights are reserved for desktop layouts (1024px and
+above). Mobile solution panels show their workflow diagrams without reserving
+empty space for inactive panels, and value cards reveal individually on scroll.
+Keep mobile spacing content-driven when adding new sections. Check narrow
+320px and 390px viewports as well as tablet and desktop layouts.
+
 ## Navigation and company content
 
 Company pages open only when selected at `/about/`, `/partners/`, `/careers/`,

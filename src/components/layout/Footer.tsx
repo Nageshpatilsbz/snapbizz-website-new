@@ -23,8 +23,8 @@ export function Footer() {
           </SiteLink>
         </div>
 
-        <div className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-[1.15fr_1fr_1fr_1fr_0.85fr]">
-          <div className="sm:col-span-2 lg:col-span-4 xl:col-span-1">
+        <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:mt-10 sm:gap-x-8 sm:gap-y-10 lg:grid-cols-4 xl:grid-cols-[1.15fr_1fr_1fr_1fr_0.85fr]">
+          <div className="col-span-2 lg:col-span-4 xl:col-span-1">
             <SiteLink href="#top" aria-label="SnapBizz home" className="inline-flex rounded-2xl focus-visible:outline-white">
               <Logo variant="light" className="rounded-2xl px-4 py-3 shadow-lg [&_img]:h-12" />
             </SiteLink>

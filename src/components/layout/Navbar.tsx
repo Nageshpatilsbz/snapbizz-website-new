@@ -96,7 +96,7 @@ export function Navbar() {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 py-3 lg:px-8"
+        className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
         aria-label="Primary"
       >
         <SiteLink href="#top" className="flex shrink-0 items-center" aria-label="SnapBizz home">
@@ -177,7 +177,7 @@ export function Navbar() {
         <button
           ref={mobileButtonRef}
           type="button"
-          className="inline-flex items-center justify-center rounded-full p-2 text-ink lg:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 text-ink lg:hidden"
           onClick={() => setIsMobileOpen((open) => !open)}
           aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMobileOpen}

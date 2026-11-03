@@ -93,8 +93,8 @@ export function HowItWorks() {
   const playing = isInView && !reducedMotion
 
   return (
-    <section id="how-it-works" className="brand-wash bg-surface-soft py-24 sm:py-28">
-      <Container className="flex flex-col gap-14">
+    <section id="how-it-works" className="brand-wash bg-surface-soft py-12 sm:py-28">
+      <Container className="flex flex-col gap-8 sm:gap-14">
         <SectionHeading
           eyebrow="How It Works"
           title="A Straightforward Path to Deployment"
