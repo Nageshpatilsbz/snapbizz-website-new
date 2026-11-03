@@ -26,8 +26,8 @@ const documents = await Promise.all((await htmlFiles(dist)).map(async (file) => 
   html: await readFile(file, 'utf8'),
 })))
 
-test('all 24 routes have complete content and unique metadata before JavaScript', () => {
-  assert.equal(documents.length, 25)
+test('all 23 routes have complete content and unique metadata before JavaScript', () => {
+  assert.equal(documents.length, 24)
   const titles = new Set()
   const descriptions = new Set()
   for (const { file, html } of documents) {
@@ -63,10 +63,27 @@ test('all 24 routes have complete content and unique metadata before JavaScript'
   }
 })
 
+test('solutions appear in the requested order without the removed label printer', () => {
+  const expected = [
+    'turbo-android-pos',
+    'neo-windows-pos',
+    'bank-branded-apos',
+    'warehouse-portal',
+    'custom-enterprise',
+    'payment-collection',
+  ]
+  const actual = [...home.matchAll(/data-solution="([^"]+)"/g)].map((match) => match[1])
+  assert.deepEqual(actual, expected)
+  for (const { html } of documents) {
+    assert.ok(!html.includes('label-printer'))
+    assert.ok(!html.includes('Label Printer'))
+  }
+})
+
 test('sitemap and robots advertise only indexable canonical URLs', async () => {
   const sitemap = await readFile(path.join(dist, 'sitemap.xml'), 'utf8')
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => decode(match[1]))
-  assert.equal(urls.length, 23)
+  assert.equal(urls.length, 22)
   assert.equal(new Set(urls).size, urls.length)
   assert.ok(urls.includes(root.href))
   assert.ok(urls.every((url) => url.startsWith(root.href) && !url.includes('#') && !url.includes('/careers/')))

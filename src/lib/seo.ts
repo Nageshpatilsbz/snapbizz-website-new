@@ -14,7 +14,6 @@ export interface PageMetadata {
 const solutionTitles: Record<string, string> = {
   'turbo-android-pos': 'Android POS Billing & Inventory Software',
   'neo-windows-pos': 'Windows POS Billing Software for Retail',
-  'label-printer': 'Barcode & Price Label Printing for POS',
   'warehouse-portal': 'Warehouse Inventory & Order Management Portal',
   'bank-branded-apos': 'Bank-Branded APOS & Merchant Applications',
   'custom-enterprise': 'Custom Enterprise Billing & Payment Solutions',

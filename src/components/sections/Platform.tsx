@@ -136,11 +136,6 @@ export function Platform() {
           <div className="min-w-0" aria-labelledby={`${explorerId}-heading`}>
             <div className="mb-5 flex items-center justify-between gap-4">
               <h3 id={`${explorerId}-heading`} className="text-sm font-semibold text-ink">Platform Capabilities</h3>
-              <span className="text-xs tabular-nums text-ink-500">
-                <span className="font-semibold text-ink">{String(selectedIndex + 1).padStart(2, '0')}</span>
-                <span className="mx-1.5 text-ink-300">/</span>
-                {String(platformFeatures.length).padStart(2, '0')}
-              </span>
             </div>
             <div
               role="tablist"
@@ -244,9 +239,6 @@ export function Platform() {
                   <span className={`absolute left-5 top-0 h-0.5 w-8 rounded-b-full transition-[width] duration-300 group-hover:w-14 ${accentBgClass[service.accent]}`} aria-hidden="true" />
                   <div className="mb-5 flex items-center justify-between gap-2">
                     <AccentIcon icon={service.icon} accent={service.accent} className="transition-transform duration-300 motion-safe:group-hover:-rotate-6" />
-                    <span className="text-[10px] font-semibold tabular-nums tracking-wider text-ink-300" aria-hidden="true">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
                   </div>
                   <h4 className="text-base font-semibold tracking-tight text-ink">{service.name}</h4>
                   <p className="mt-2 text-sm leading-relaxed text-ink-500">{service.description}</p>

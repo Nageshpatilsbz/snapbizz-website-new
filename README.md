@@ -27,6 +27,10 @@ empty space for inactive panels, and value cards reveal individually on scroll.
 Keep mobile spacing content-driven when adding new sections. Check narrow
 320px and 390px viewports as well as tablet and desktop layouts.
 
+Solution feature cards use equal-height rows, vertically centered content, and
+consistent icon placement, without decorative numbering. Their grid sizes independently of the
+product card so longer product descriptions do not stretch the feature cards.
+
 ## Navigation and company content
 
 Company pages open only when selected at `/about/`, `/partners/`, `/careers/`,
@@ -50,6 +54,10 @@ The header and footer link to individual solution panels, all industry pages,
 and each connected service. Module labels and service IDs are maintained in
 [content.ts](src/data/content.ts). Preserve these IDs when editing copy so
 existing navigation links keep working.
+
+Solutions are ordered as Turbo, Neo, Bank-Branded APOS, Warehouse
+Portal, Custom Enterprise Solutions, and Payment Collection & Reconciliation.
+Label Printer is no longer listed as a standalone solution or generated page.
 
 ## SEO and static hosting
 

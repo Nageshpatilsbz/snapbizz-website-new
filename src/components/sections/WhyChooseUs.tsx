@@ -20,7 +20,7 @@ export function WhyChooseUs() {
           className="relative grid gap-4 sm:auto-rows-fr sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
           style={{ perspective: 1200 }}
         >
-          {reasons.map((reason, index) => (
+          {reasons.map((reason) => (
             <motion.li
               key={reason.title}
               initial={reducedMotion ? false : { opacity: 0, y: 20 }}
@@ -46,9 +46,6 @@ export function WhyChooseUs() {
                 <div className="relative mb-4 flex items-center justify-between sm:mb-6">
                   <span className="rounded-2xl bg-white p-1.5 shadow-[0_4px_12px_rgba(15,23,42,0.08)] ring-1 ring-ink/5 transition-transform duration-300 motion-safe:group-hover:-rotate-6 motion-safe:group-hover:scale-105">
                     <AccentIcon icon={reason.icon} accent={reason.accent} className="rounded-xl" />
-                  </span>
-                  <span className="font-display text-sm font-semibold tabular-nums tracking-widest text-ink-300" aria-hidden="true">
-                    {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
                 <h3 className="relative text-lg font-semibold leading-snug tracking-tight text-ink">{reason.title}</h3>

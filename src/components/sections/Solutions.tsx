@@ -81,7 +81,7 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
           }`}
           aria-hidden={!showTabs}
         >
-          <div className="mx-auto grid max-w-7xl grid-cols-4 gap-1.5 rounded-xl bg-surface-soft p-1.5 xl:grid-cols-7">
+          <div className="mx-auto grid max-w-7xl grid-cols-4 gap-1.5 rounded-xl bg-surface-soft p-1.5 xl:grid-cols-6">
             {solutions.map((solution) => {
               const isActive = solution.id === activeId
               return (
@@ -147,9 +147,6 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
                       aria-hidden="true"
                     />
                     <div className="relative flex flex-wrap items-center justify-between gap-2">
-                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-                        Solution {String(index + 1).padStart(2, '0')}
-                      </span>
                       {solution.platform ? (
                         <span className="inline-flex w-fit items-center rounded-full bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-white/50 backdrop-blur">
                           {solution.platform}
@@ -226,23 +223,20 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
                     ) : null}
                   </div>
 
-                  <ul className="grid content-stretch gap-3 sm:grid-cols-2 sm:grid-rows-3 lg:col-span-3">
-                    {solution.features.map((feature, fi) => (
+                  <ul className="grid auto-rows-fr gap-3 self-center sm:grid-cols-2 sm:grid-rows-3 lg:col-span-3">
+                    {solution.features.map((feature) => (
                       <li
                         key={feature}
-                        className="group/feat relative flex cursor-pointer items-start gap-3 overflow-hidden rounded-2xl border border-line bg-linear-to-br from-white to-surface-soft p-4 pl-5 text-sm leading-snug text-ink-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-[0_16px_32px_-14px_rgba(66,133,244,0.45)]"
+                        className="group/feat relative flex min-h-28 items-center gap-3 overflow-hidden rounded-2xl border border-line bg-linear-to-br from-white to-surface-soft p-5 text-sm leading-relaxed text-ink-700 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-blue/40 hover:shadow-[0_16px_32px_-14px_rgba(66,133,244,0.45)] sm:min-h-36"
                       >
                         <span
                           className={`absolute inset-y-0 left-0 w-1 bg-linear-to-b ${panelGradients[index % panelGradients.length]}`}
                           aria-hidden="true"
                         />
-                        <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green/10 ring-1 ring-brand-green/20 transition-transform duration-300 group-hover/feat:scale-110">
-                          <CheckCircle2 className="h-4 w-4 text-brand-green" aria-hidden="true" />
+                        <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-green/10 ring-1 ring-brand-green/20 transition-transform duration-300 group-hover/feat:scale-110">
+                          <CheckCircle2 className="h-5 w-5 text-brand-green" aria-hidden="true" />
                         </span>
-                        <span className="flex-1">{feature}</span>
-                        <span className="text-[10px] font-bold tabular-nums text-ink-300">
-                          {String(fi + 1).padStart(2, '0')}
-                        </span>
+                        <span className="min-w-0 flex-1">{feature}</span>
                       </li>
                     ))}
                   </ul>

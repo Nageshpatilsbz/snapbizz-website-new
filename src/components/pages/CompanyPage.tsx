@@ -52,15 +52,14 @@ export function CompanyPage({ id }: { id: string }) {
       <section className="brand-wash bg-surface-soft py-10 sm:py-20">
         <Container className="grid gap-6 sm:gap-10 lg:grid-cols-[1fr_17rem] lg:items-start">
           <div className="min-w-0 space-y-5">
-            {page.id === 'privacy' ? <PrivacyPolicy /> : page.id === 'terms' ? <TermsAndConditions /> : page.sections.map((section, index) => page.id === 'faq' ? (
+            {page.id === 'privacy' ? <PrivacyPolicy /> : page.id === 'terms' ? <TermsAndConditions /> : page.sections.map((section) => page.id === 'faq' ? (
               <details key={section.title} className="group rounded-2xl border border-line bg-white p-6 shadow-sm">
                 <summary className="cursor-pointer text-base font-semibold text-ink marker:text-brand-blue">{section.title}</summary>
                 <p className="mt-4 text-sm leading-relaxed">{section.body}</p>
               </details>
             ) : (
               <article key={section.title} className="rounded-2xl border border-line bg-white p-6 shadow-sm sm:p-8">
-                <p className="text-xs font-semibold tabular-nums text-brand-blue">{String(index + 1).padStart(2, '0')}</p>
-                <h2 className="mt-3 text-xl font-semibold">{section.title}</h2>
+                <h2 className="text-xl font-semibold">{section.title}</h2>
                 <p className="mt-3 leading-relaxed">{section.body}</p>
               </article>
             ))}

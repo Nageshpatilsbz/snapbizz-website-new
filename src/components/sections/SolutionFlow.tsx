@@ -36,12 +36,6 @@ const flows: Record<string, Step[]> = {
     { icon: CloudUpload, label: 'Sync', detail: 'Cloud backup of every sale' },
     { icon: BarChart3, label: 'Insights', detail: 'Reports and dashboards' },
   ],
-  'label-printer': [
-    { icon: ScanBarcode, label: 'Select', detail: 'Pick products to label' },
-    { icon: Layers, label: 'Design', detail: 'Choose a label template' },
-    { icon: ReceiptText, label: 'Print', detail: 'Barcode and price labels' },
-    { icon: BarChart3, label: 'Apply', detail: 'Label shelves and products' },
-  ],
   'warehouse-portal': [
     { icon: CloudUpload, label: 'Receive', detail: 'Stock inward entries' },
     { icon: Network, label: 'Allocate', detail: 'Orders to stores' },

@@ -20,7 +20,6 @@ import {
 import { TempleIcon, TrafficSignalIcon } from '../components/ui/CustomIcons'
 import turboImg from '../assets/products/turbo.png'
 import neoImg from '../assets/products/neo.png'
-import printerImg from '../assets/products/printer.png'
 import warehousePortalImg from '../assets/w-portal.png'
 import aposImg from '../assets/products/apos.png'
 import tabletImg from '../assets/products/tablet.png'
@@ -51,34 +50,28 @@ export const navItems: NavItem[] = [
     href: '#solutions',
     items: [
       {
-        label: 'Turbo POS (Android)',
+        label: 'Turbo',
         description: 'Android POS terminal for billing, inventory, and engagement.',
         href: '#solution-turbo-android-pos',
         icon: ShoppingBag,
       },
       {
-        label: 'Neo POS (Windows)',
+        label: 'Neo',
         description: 'Windows POS software for laptops and desktops.',
         href: '#solution-neo-windows-pos',
         icon: LayoutDashboard,
-      },
-      {
-        label: 'Label Printer',
-        description: 'Barcode and price label printing for your POS.',
-        href: '#solution-label-printer',
-        icon: Receipt,
-      },
-      {
-        label: 'Warehouse Portal',
-        description: 'Stock, orders, and multi-location visibility.',
-        href: '#solution-warehouse-portal',
-        icon: Building2,
       },
       {
         label: 'Bank-Branded APOS',
         description: 'Partner-branded merchant applications for banks and fintechs.',
         href: '#solution-bank-branded-apos',
         icon: Banknote,
+      },
+      {
+        label: 'Warehouse Portal',
+        description: 'Stock, orders, and multi-location visibility.',
+        href: '#solution-warehouse-portal',
+        icon: Building2,
       },
       {
         label: 'Custom Enterprise Solutions',
@@ -150,7 +143,7 @@ export const solutions: Solution[] = [
     id: 'turbo-android-pos',
     accent: 'green',
     icon: ShoppingBag,
-    title: 'Turbo POS',
+    title: 'Turbo',
     platform: 'Android',
     image: turboImg,
     imageAlt: 'SnapBizz Turbo Android POS terminal',
@@ -170,7 +163,7 @@ export const solutions: Solution[] = [
     id: 'neo-windows-pos',
     accent: 'blue',
     icon: LayoutDashboard,
-    title: 'Neo POS',
+    title: 'Neo',
     platform: 'Windows',
     image: neoImg,
     imageAlt: 'SnapBizz Neo Windows POS on a laptop',
@@ -185,46 +178,6 @@ export const solutions: Solution[] = [
       'Sales reports and multi-store portal visibility',
     ],
     cta: 'Request a Neo Demo',
-  },
-  {
-    id: 'label-printer',
-    accent: 'yellow',
-    icon: Receipt,
-    title: 'Label Printer',
-    platform: 'Hardware',
-    image: printerImg,
-    imageAlt: 'TSC label printer for barcode and price labels',
-    description:
-      'Barcode and price label printing that works with SnapBizz POS for shelves, products, and packaging.',
-    features: [
-      'Barcode and price label printing',
-      'Thermal printing with no ink or toner',
-      'Works with Turbo and Neo POS',
-      'Custom label sizes and templates',
-      'Quick shelf and product labelling',
-      'Reliable, durable build for daily use',
-    ],
-    cta: 'Ask About Printers',
-  },
-  {
-    id: 'warehouse-portal',
-    accent: 'red',
-    icon: Building2,
-    title: 'Warehouse Portal',
-    platform: 'Web',
-    image: warehousePortalImg,
-    imageAlt: 'SnapBizz Warehouse Portal web app showing the product catalogue and inventory',
-    description:
-      'Web portal for distributors and warehouses to manage stock, orders, and store-level visibility.',
-    features: [
-      'Central inventory across warehouses and stores',
-      'Order and dispatch tracking',
-      'Product catalog management',
-      'Multi-location dashboards',
-      'Reports and audit-ready records',
-      'Integration with SnapBizz POS and ERP',
-    ],
-    cta: 'Request Portal Access',
   },
   {
     id: 'bank-branded-apos',
@@ -245,6 +198,26 @@ export const solutions: Solution[] = [
       'Business reports and supported multi-device, multi-store dashboards',
     ],
     cta: 'Explore Solution',
+  },
+  {
+    id: 'warehouse-portal',
+    accent: 'red',
+    icon: Building2,
+    title: 'Warehouse Portal',
+    platform: 'Web',
+    image: warehousePortalImg,
+    imageAlt: 'SnapBizz Warehouse Portal web app showing the product catalogue and inventory',
+    description:
+      'Web portal for distributors and warehouses to manage stock, orders, and store-level visibility.',
+    features: [
+      'Central inventory across warehouses and stores',
+      'Order and dispatch tracking',
+      'Product catalog management',
+      'Multi-location dashboards',
+      'Reports and audit-ready records',
+      'Integration with SnapBizz POS and ERP',
+    ],
+    cta: 'Request Portal Access',
   },
   {
     id: 'custom-enterprise',

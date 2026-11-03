@@ -18,8 +18,8 @@ const nodes: EcosystemNode[] = [
   { title: 'Bank partners', note: 'APOS & fintech', icon: Handshake, color: '#1765ee', x: 12, y: 22, lx: 10, ly: 19 },
   { title: 'Online orders', note: 'Snap order app', icon: Smartphone, artwork: 'mobile', color: '#00a878', x: 50, y: 14, lx: 50, ly: 18 },
   { title: 'Payments', note: 'UPI, cards, cash', icon: CreditCard, color: '#f59e0b', x: 88, y: 22, lx: 90, ly: 19 },
-  { title: 'Turbo POS', note: 'Android', icon: ShoppingBag, artwork: 'turbo', color: '#0f9d58', x: 8, y: 54, lx: 6, ly: 53 },
-  { title: 'Neo POS', note: 'Windows', icon: ShoppingBag, artwork: 'neo', color: '#1765ee', x: 92, y: 54, lx: 94, ly: 53 },
+  { title: 'Turbo', note: 'Android', icon: ShoppingBag, artwork: 'turbo', color: '#0f9d58', x: 8, y: 54, lx: 6, ly: 53 },
+  { title: 'Neo', note: 'Windows', icon: ShoppingBag, artwork: 'neo', color: '#1765ee', x: 92, y: 54, lx: 94, ly: 53 },
   { title: 'Inventory', note: 'Live stock', icon: Package, color: '#ef7d22', x: 22, y: 86, lx: 18, ly: 87 },
   { title: 'Business insights', note: 'Sales analytics', icon: BarChart3, color: '#ef5261', x: 78, y: 86, lx: 82, ly: 87 },
 ]

@@ -41,12 +41,10 @@ export const companyPages: CompanyPageContent[] = [
     id: 'careers',
     label: 'Careers',
     title: 'Help Shape Connected Commerce.',
-    description: 'A starting point for future opportunities at SnapBizz.',
+    description: 'Discover future opportunities to grow with SnapBizz.',
     icon: Users,
     sections: [
-      { title: 'Work that connects businesses', body: 'Explore the products and industries on this website to learn about the retail, banking, and enterprise challenges our solutions address.' },
-      { title: 'Opportunities', body: 'This careers page is being prepared. Approved job listings, role requirements, locations, and application instructions will be added here. No job vacancies are advertised on this page yet.' },
-      { title: 'Before applying', body: 'Please wait for an official role listing and application channel. The business enquiry form is not a recruitment application system; do not submit resumes or sensitive personal documents there.' },
+      { title: 'No current openings', body: 'Thank you for your interest in joining SnapBizz. We do not have any open positions at the moment. Please check back for future opportunities.' },
     ],
   },
   {
@@ -56,7 +54,7 @@ export const companyPages: CompanyPageContent[] = [
     description: 'Quick answers about the SnapBizz platform, deployments, and partnerships.',
     icon: HelpCircle,
     sections: [
-      { title: 'What is the difference between Turbo POS and Neo POS?', body: 'Turbo POS is the Android offering, while Neo POS is designed for Windows laptops and desktops. The right configuration depends on your billing, inventory, device, and integration requirements.' },
+      { title: 'What is the difference between Turbo and Neo?', body: 'Turbo is the Android offering, while Neo is designed for Windows laptops and desktops. The right configuration depends on your billing, inventory, device, and integration requirements.' },
       { title: 'Does SnapBizz work with banks and fintechs?', body: 'Bank-branded APOS solutions support partner-branded merchant workflows and payment integrations. Device support and features depend on the agreed deployment.' },
       { title: 'Can billing connect to payment collection?', body: 'Payment Collection & Reconciliation connects supported PC-based billing and APOS workflows to help match billing records with payments. Supported payment methods and ERP connections vary by configuration.' },
       { title: 'Can solutions be tailored to my industry?', body: 'Custom Enterprise Solutions support tailored branding, billing, and operational workflows. Explore the industry pages for examples, then discuss your specific requirements.' },

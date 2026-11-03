@@ -122,12 +122,11 @@ export function HowItWorks() {
                     type="button"
                     onClick={() => setActiveIndex(index)}
                     aria-pressed={activeIndex === index}
-                    aria-label={`Show step ${step.step}: ${step.title}`}
+                    aria-label={`Show ${step.title}`}
                     className={`inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
                       activeIndex === index ? 'bg-brand-blue text-white' : 'bg-surface-soft text-ink-500 hover:bg-brand-blue-light'
                     }`}
                   >
-                    <span className="tabular-nums">{step.step}</span>
                     <span>{index === 0 ? 'Discover' : index === 1 ? 'Configure' : 'Launch & support'}</span>
                   </button>
                   <span className={`h-1.5 w-1.5 rounded-full ${activeIndex === index ? 'bg-brand-green' : 'bg-line'}`} aria-hidden="true" />
