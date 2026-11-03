@@ -10,7 +10,7 @@ export interface WebsiteLead {
 }
 
 const websiteLeadsEndpoint =
-  'http://admin-panel.snapbizz.com/SnapBizzAdminV2/api/website-leads/submit'
+  'https://apiv2-test.snapbizz.com/v5/api/website-leads/submit'
 
 export async function submitWebsiteLead(lead: WebsiteLead): Promise<void> {
   const response = await fetch(websiteLeadsEndpoint, {
@@ -19,7 +19,11 @@ export async function submitWebsiteLead(lead: WebsiteLead): Promise<void> {
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify(lead),
+    body: JSON.stringify({
+      ...lead,
+      iscontacted: false,
+      leadStatus: 'NEW',
+    }),
   })
 
   if (!response.ok) {
