@@ -116,7 +116,7 @@ export const navItems: NavItem[] = [
     label: 'Company',
     href: companyPageHref('about'),
     items: [
-      ...companyPages.filter((page) => !page.legal && page.id !== 'about').map((page) => ({
+      ...companyPages.filter((page) => !page.legal && page.id !== 'about' && page.id !== 'faq').map((page) => ({
         label: page.label,
         description: page.description,
         href: companyPageHref(page.id),
@@ -127,6 +127,8 @@ export const navItems: NavItem[] = [
       { label: 'Why SnapBizz', description: 'Flexible workflows, integrations, and merchant support.', href: '#why-us', icon: ShieldCheck },
     ],
   },
+  { label: 'Tutorials', href: pageHref('tutorials/') },
+  { label: 'FAQs', href: companyPageHref('faq') },
   { label: 'Contact', href: '#contact' },
 ]
 

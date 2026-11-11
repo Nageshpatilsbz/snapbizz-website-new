@@ -19,6 +19,7 @@ import { Navbar } from './components/layout/Navbar'
 const CompanyPage = lazy(() => import('./components/pages/CompanyPage').then((module) => ({ default: module.CompanyPage })))
 const SolutionPage = lazy(() => import('./components/pages/SolutionPage').then((module) => ({ default: module.SolutionPage })))
 const DataPage = lazy(() => import('./components/pages/DataPage').then((module) => ({ default: module.DataPage })))
+const TutorialsPage = lazy(() => import('./components/pages/TutorialsPage').then((module) => ({ default: module.TutorialsPage })))
 
 function App({ pathname }: { pathname?: string }) {
   const page = getPage(pathname ?? getPagePath(window.location.pathname))
@@ -55,6 +56,7 @@ function App({ pathname }: { pathname?: string }) {
             : page.kind === 'industry' ? <IndustryPage id={page.id!} />
               : page.kind === 'solution' ? <SolutionPage id={page.id!} />
                 : page.kind === 'data' ? <DataPage />
+                : page.kind === 'tutorials' ? <TutorialsPage />
                 : page.kind === 'not-found' ? <NotFoundPage />
                   : <>
                     <Hero />

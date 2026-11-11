@@ -6,7 +6,7 @@ export interface PageMetadata {
   path: string
   title: string
   description: string
-  kind: 'home' | 'company' | 'industry' | 'solution' | 'data' | 'not-found'
+  kind: 'home' | 'company' | 'industry' | 'solution' | 'data' | 'tutorials' | 'not-found'
   id?: string
   noindex?: boolean
 }
@@ -23,7 +23,7 @@ const solutionTitles: Record<string, string> = {
 const companyDescriptions: Record<string, string> = {
   about: 'Learn how SnapBizz connects retail checkout, Android and Windows POS, banking partnerships, and enterprise payment workflows.',
   partners: 'Explore SnapBizz partnerships for banks, fintechs, device providers, distributors, and enterprise billing and payment integrations.',
-  faq: 'Find answers about SnapBizz Android and Windows POS, bank-branded APOS, payment reconciliation, deployment, and support.',
+  faq: 'Find product answers for SnapBizz Turbo, SnapBizz Lite, SnapOrder, and connected retail workflows.',
   privacy: 'Read the SnapBizz Cloudtech Pvt. Ltd. website Privacy Policy, including information collection, usage, sharing, opt-out, and grievance contacts.',
   terms: 'Read the SnapBizz software license agreement and mobile service privacy terms, including licensing, restrictions, liability, and data handling.',
 }
@@ -40,6 +40,12 @@ export const pages: PageMetadata[] = [
     title: 'Snapbizz Data Suite | SnapBizz',
     description: 'Explore Snapbizz consumer transaction data for FMCG products, built from POS transactions across India.',
     kind: 'data',
+  },
+  {
+    path: '/tutorials/',
+    title: 'SnapBizz Tutorials | How-To Videos & Training',
+    description: 'Watch SnapBizz Turbo and Lite how-to videos, explore SnapOrder guidance, and find product FAQs and live training.',
+    kind: 'tutorials',
   },
   ...companyPages.map((page): PageMetadata => ({
     path: `/${page.id}/`,

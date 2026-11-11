@@ -5,6 +5,7 @@ import { Button } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { PrivacyPolicy } from './PrivacyPolicy'
 import { TermsAndConditions } from './TermsAndConditions'
+import { ProductFaqLibrary } from './ProductFaqLibrary'
 import { SiteLink } from '../ui/SiteLink'
 
 export function CompanyPage({ id }: { id: string }) {
@@ -63,6 +64,7 @@ export function CompanyPage({ id }: { id: string }) {
                 <p className="mt-3 leading-relaxed">{section.body}</p>
               </article>
             ))}
+            {page.id === 'faq' ? <ProductFaqLibrary /> : null}
             {!page.legal && page.id !== 'careers' ? (
               <div className="rounded-2xl bg-brand-blue-light p-6">
                 <h2 className="text-xl font-semibold">Explore the right solution for your business.</h2>
