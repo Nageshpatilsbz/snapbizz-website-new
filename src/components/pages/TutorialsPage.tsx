@@ -51,8 +51,7 @@ export function TutorialsPage() {
       <section className="border-b border-line bg-[linear-gradient(115deg,#eef5ff_0%,#ffffff_48%,#eff9f3_100%)] pb-10 pt-32 sm:pb-14 sm:pt-40">
         <Container className="grid items-center gap-6 lg:grid-cols-[1fr_auto] lg:gap-12">
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">Learn at your own pace</p>
-            <h1 className="mt-3 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">SnapBizz Tutorials</h1>
+            <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl">SnapBizz Tutorials</h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-ink-700 sm:text-lg sm:leading-8">
               Practical how-to videos and product guidance for the tools that keep your store moving.
             </p>
@@ -68,8 +67,7 @@ export function TutorialsPage() {
         <Container>
           <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-blue-dark">Tutorial library</p>
-              <h2 id="tutorial-library-title" className="mt-2 text-2xl font-bold sm:text-3xl">What are you learning today?</h2>
+              <h2 id="tutorial-library-title" className="text-2xl font-bold sm:text-3xl">What are you learning today?</h2>
             </div>
             <div className="inline-flex max-w-full flex-wrap gap-1 rounded-xl border border-line bg-white p-1 shadow-soft" role="group" aria-label="Choose a product">
               {products.map(({ id, name, accent }) => (
@@ -152,8 +150,7 @@ export function TutorialsPage() {
               <GraduationCap className="h-5 w-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-ink-500">SnapBizz Turbo</p>
-              <h2 id="training-title" className="mt-1 text-xl font-semibold">Join a live training session</h2>
+              <h2 id="training-title" className="text-xl font-semibold">Join a live training session</h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-ink-500">Attend a 60-minute online session with the team every Thursday at 1:30 PM.</p>
             </div>
           </div>

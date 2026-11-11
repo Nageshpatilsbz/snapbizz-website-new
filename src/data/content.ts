@@ -127,6 +127,7 @@ export const navItems: NavItem[] = [
       { label: 'Why SnapBizz', description: 'Flexible workflows, integrations, and merchant support.', href: '#why-us', icon: ShieldCheck },
     ],
   },
+  { label: 'News', href: pageHref('news/') },
   { label: 'Tutorials', href: pageHref('tutorials/') },
   { label: 'FAQs', href: companyPageHref('faq') },
   { label: 'Contact', href: '#contact' },

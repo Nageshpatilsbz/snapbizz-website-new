@@ -70,6 +70,7 @@ export function Footer() {
             <h3 className="text-xs font-semibold uppercase tracking-wider !text-white">Company</h3>
             <ul className="mt-5 space-y-3">
               <li><a href={pageHref('data/')} className={linkClass}>Snapbizz Data Suite</a></li>
+              <li><a href={pageHref('news/')} className={linkClass}>News</a></li>
               {companyPages.filter((page) => !page.legal).map((page) => (
                 <li key={page.id}><a href={companyPageHref(page.id)} className={linkClass}>{page.label}</a></li>
               ))}

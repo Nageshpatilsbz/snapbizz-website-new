@@ -20,6 +20,8 @@ const CompanyPage = lazy(() => import('./components/pages/CompanyPage').then((mo
 const SolutionPage = lazy(() => import('./components/pages/SolutionPage').then((module) => ({ default: module.SolutionPage })))
 const DataPage = lazy(() => import('./components/pages/DataPage').then((module) => ({ default: module.DataPage })))
 const TutorialsPage = lazy(() => import('./components/pages/TutorialsPage').then((module) => ({ default: module.TutorialsPage })))
+const NewsPage = lazy(() => import('./components/pages/NewsPage').then((module) => ({ default: module.NewsPage })))
+const NewsArticlePage = lazy(() => import('./components/pages/NewsArticlePage').then((module) => ({ default: module.NewsArticlePage })))
 
 function App({ pathname }: { pathname?: string }) {
   const page = getPage(pathname ?? getPagePath(window.location.pathname))
@@ -57,6 +59,8 @@ function App({ pathname }: { pathname?: string }) {
               : page.kind === 'solution' ? <SolutionPage id={page.id!} />
                 : page.kind === 'data' ? <DataPage />
                 : page.kind === 'tutorials' ? <TutorialsPage />
+                : page.kind === 'news' ? <NewsPage />
+                : page.kind === 'news-article' ? <NewsArticlePage slug={page.id!} />
                 : page.kind === 'not-found' ? <NotFoundPage />
                   : <>
                     <Hero />

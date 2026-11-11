@@ -1,12 +1,13 @@
 import { companyPages } from '../data/companyPages'
 import { industries, solutions } from '../data/content'
 import { industryDetails } from '../data/industryDetails'
+import { newsStories } from '../data/news'
 
 export interface PageMetadata {
   path: string
   title: string
   description: string
-  kind: 'home' | 'company' | 'industry' | 'solution' | 'data' | 'tutorials' | 'not-found'
+  kind: 'home' | 'company' | 'industry' | 'solution' | 'data' | 'tutorials' | 'news' | 'news-article' | 'not-found'
   id?: string
   noindex?: boolean
 }
@@ -47,6 +48,19 @@ export const pages: PageMetadata[] = [
     description: 'Watch SnapBizz Turbo and Lite how-to videos, explore SnapOrder guidance, and find product FAQs and live training.',
     kind: 'tutorials',
   },
+  {
+    path: '/news/',
+    title: 'News & Press | SnapBizz',
+    description: 'Read SnapBizz company updates and media coverage of retail technology, neighborhood stores, and digital commerce.',
+    kind: 'news',
+  },
+  ...newsStories.map((story): PageMetadata => ({
+    path: `/news/${story.slug}/`,
+    title: `${story.title} | SnapBizz News`,
+    description: story.summary,
+    kind: 'news-article',
+    id: story.slug,
+  })),
   ...companyPages.map((page): PageMetadata => ({
     path: `/${page.id}/`,
     title: `${page.label} | SnapBizz`,
