@@ -103,7 +103,7 @@ export function Navbar() {
           <Logo className="[&_img]:h-13 sm:[&_img]:h-14" />
         </SiteLink>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-0 xl:flex">
           {navItems.map((item) => (
             <li
               key={item.label}
@@ -121,7 +121,7 @@ export function Navbar() {
                   ref={(element) => { dropdownRefs.current[item.label] = element }}
                   type="button"
                   onClick={(event) => setOpenDropdown((open) => event.detail === 0 && open === item.label ? null : item.label)}
-                  className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue"
+                  className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue"
                   aria-expanded={openDropdown === item.label}
                   aria-controls={openDropdown === item.label ? `nav-${item.label.toLowerCase()}` : undefined}
                 >
@@ -129,7 +129,7 @@ export function Navbar() {
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
               ) : (
-                <SiteLink href={item.href} className="flex rounded-full px-4 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue">
+                <SiteLink href={item.href} className="flex rounded-full px-3 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue">
                   {item.label}
                 </SiteLink>
               )}
@@ -168,7 +168,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden lg:block">
+        <div className="hidden xl:block">
           <Button href="#contact" variant="primary">
             Request a Demo
           </Button>
@@ -177,7 +177,7 @@ export function Navbar() {
         <button
           ref={mobileButtonRef}
           type="button"
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 text-ink lg:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 text-ink xl:hidden"
           onClick={() => setIsMobileOpen((open) => !open)}
           aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMobileOpen}
@@ -195,7 +195,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-line bg-white lg:hidden"
+            className="overflow-hidden border-t border-line bg-white xl:hidden"
           >
             <div className="flex max-h-[calc(100dvh-4.5rem)] flex-col gap-1 overflow-y-auto overscroll-contain px-6 py-4">
               {navItems.map((item) => (

@@ -2,12 +2,13 @@ import { companyPages } from '../data/companyPages'
 import { industries, solutions } from '../data/content'
 import { industryDetails } from '../data/industryDetails'
 import { newsStories } from '../data/news'
+import { blogStories } from '../data/blog'
 
 export interface PageMetadata {
   path: string
   title: string
   description: string
-  kind: 'home' | 'company' | 'industry' | 'solution' | 'data' | 'tutorials' | 'news' | 'news-article' | 'not-found'
+  kind: 'home' | 'company' | 'industry' | 'solution' | 'data' | 'tutorials' | 'news' | 'news-article' | 'blog' | 'blog-article' | 'distributors' | 'not-found'
   id?: string
   noindex?: boolean
 }
@@ -54,11 +55,30 @@ export const pages: PageMetadata[] = [
     description: 'Read SnapBizz company updates and media coverage of retail technology, neighborhood stores, and digital commerce.',
     kind: 'news',
   },
+  {
+    path: '/blog/',
+    title: 'SnapBizz Blog | Retail Insights & SnapPulse Data',
+    description: 'Read original SnapBizz insights on kirana retail, SnapPulse data, consumer trends, and digital transformation.',
+    kind: 'blog',
+  },
+  {
+    path: '/distributors/',
+    title: 'Become a SnapBizz Distribution Partner | SnapBizz',
+    description: 'Explore a distribution partnership with SnapBizz and help kirana stores adopt digital retail solutions.',
+    kind: 'distributors',
+  },
   ...newsStories.map((story): PageMetadata => ({
     path: `/news/${story.slug}/`,
     title: `${story.title} | SnapBizz News`,
     description: story.summary,
     kind: 'news-article',
+    id: story.slug,
+  })),
+  ...blogStories.map((story): PageMetadata => ({
+    path: `/blog/${story.slug}/`,
+    title: `${story.title} | SnapBizz Blog`,
+    description: story.summary,
+    kind: 'blog-article',
     id: story.slug,
   })),
   ...companyPages.map((page): PageMetadata => ({

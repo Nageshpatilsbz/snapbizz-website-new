@@ -22,6 +22,9 @@ const DataPage = lazy(() => import('./components/pages/DataPage').then((module) 
 const TutorialsPage = lazy(() => import('./components/pages/TutorialsPage').then((module) => ({ default: module.TutorialsPage })))
 const NewsPage = lazy(() => import('./components/pages/NewsPage').then((module) => ({ default: module.NewsPage })))
 const NewsArticlePage = lazy(() => import('./components/pages/NewsArticlePage').then((module) => ({ default: module.NewsArticlePage })))
+const BlogPage = lazy(() => import('./components/pages/BlogPage').then((module) => ({ default: module.BlogPage })))
+const BlogArticlePage = lazy(() => import('./components/pages/BlogArticlePage').then((module) => ({ default: module.BlogArticlePage })))
+const DistributorsPage = lazy(() => import('./components/pages/DistributorsPage').then((module) => ({ default: module.DistributorsPage })))
 
 function App({ pathname }: { pathname?: string }) {
   const page = getPage(pathname ?? getPagePath(window.location.pathname))
@@ -61,6 +64,9 @@ function App({ pathname }: { pathname?: string }) {
                 : page.kind === 'tutorials' ? <TutorialsPage />
                 : page.kind === 'news' ? <NewsPage />
                 : page.kind === 'news-article' ? <NewsArticlePage slug={page.id!} />
+                : page.kind === 'blog' ? <BlogPage />
+                : page.kind === 'blog-article' ? <BlogArticlePage slug={page.id!} />
+                : page.kind === 'distributors' ? <DistributorsPage />
                 : page.kind === 'not-found' ? <NotFoundPage />
                   : <>
                     <Hero />

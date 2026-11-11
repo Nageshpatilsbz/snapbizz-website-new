@@ -128,6 +128,8 @@ export const navItems: NavItem[] = [
     ],
   },
   { label: 'News', href: pageHref('news/') },
+  { label: 'Distributors', href: pageHref('distributors/') },
+  { label: 'Blog', href: pageHref('blog/') },
   { label: 'Tutorials', href: pageHref('tutorials/') },
   { label: 'FAQs', href: companyPageHref('faq') },
   { label: 'Contact', href: '#contact' },
@@ -383,5 +385,5 @@ export const reasons: ReasonItem[] = [
   { title: 'Dedicated Customer Support', description: 'A team invested in your rollout and ongoing operations.', icon: Users, accent: 'green' },
 ]
 
-export const industryOptions = [...industries.map((industry) => industry.title), 'Bank', 'Device Partner', 'Custom']
-export const solutionOptions = solutions.map((solution) => solution.title)
+export const industryOptions = [...industries.map((industry) => industry.title), 'Bank', 'Device Partner', 'Distributor', 'Custom']
+export const solutionOptions = [...solutions.map((solution) => solution.title), 'Distribution Partnership']

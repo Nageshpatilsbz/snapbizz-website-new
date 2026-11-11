@@ -26,8 +26,8 @@ const documents = await Promise.all((await htmlFiles(dist)).map(async (file) => 
   html: await readFile(file, 'utf8'),
 })))
 
-test('all 35 routes have complete content and unique metadata before JavaScript', () => {
-  assert.equal(documents.length, 36)
+test('all 59 routes have complete content and unique metadata before JavaScript', () => {
+  assert.equal(documents.length, 60)
   const titles = new Set()
   const descriptions = new Set()
   for (const { file, html } of documents) {
@@ -83,7 +83,7 @@ test('solutions appear in the requested order without the removed label printer'
 test('sitemap and robots advertise only indexable canonical URLs', async () => {
   const sitemap = await readFile(path.join(dist, 'sitemap.xml'), 'utf8')
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => decode(match[1]))
-  assert.equal(urls.length, 34)
+  assert.equal(urls.length, 58)
   assert.equal(new Set(urls).size, urls.length)
   assert.ok(urls.includes(root.href))
   assert.ok(urls.every((url) => url.startsWith(root.href) && !url.includes('#') && !url.includes('/careers/')))
