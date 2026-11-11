@@ -94,12 +94,12 @@ function TiltCard({ industry, index }: { industry: Industry; index: number }) {
 
 export function Industries() {
   return (
-    <section id="industries" className="brand-wash bg-surface-soft py-12 sm:py-28">
+    <section id="industries" className="border-y border-white/10 bg-[linear-gradient(135deg,#102331_0%,#101820_54%,#16352f_100%)] py-12 sm:py-28">
       <Container className="flex flex-col gap-8 sm:gap-14">
         <SectionHeading
           eyebrow="Industries"
-          title="Purpose-Built Solutions for Every Workflow"
-          description="Each industry has its own billing, collection, and reporting needs. Our platform adapts to every one of them."
+          title={<span className="text-white">Purpose-Built Solutions for Every Workflow</span>}
+          description={<span className="text-white/75">Each industry has its own billing, collection, and reporting needs. Our platform adapts to every one of them.</span>}
         />
 
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">

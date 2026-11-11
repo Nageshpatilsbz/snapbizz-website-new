@@ -96,7 +96,7 @@ export function Navbar() {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+        className="mx-auto flex h-18 w-full items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
         aria-label="Primary"
       >
         <SiteLink href="#top" className="flex shrink-0 items-center" aria-label="SnapBizz home">
