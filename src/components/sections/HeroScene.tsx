@@ -93,7 +93,7 @@ export default function HeroScene() {
       <div
         role="img"
         aria-label="Connected SnapBizz ecosystem: Turbo Android POS and Neo Windows POS linked to bank and fintech partners, inventory, online orders, digital payments, and business analytics"
-        className="relative aspect-7/6 min-h-80 w-full select-none sm:min-h-0"
+        className="relative aspect-[5/4] min-h-52 w-full select-none sm:aspect-[3/2] sm:min-h-0 min-[768px]:aspect-7/6 min-[1200px]:aspect-[3/2]"
       >
         <div
           className="absolute inset-[6%] rounded-full bg-[radial-gradient(closest-side,rgba(23,101,238,0.16),rgba(0,168,120,0.07)_60%,transparent)]"
@@ -110,9 +110,9 @@ export default function HeroScene() {
 
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" aria-hidden="true">
           <div className="hero-pulse absolute inset-0 rounded-[2rem] bg-brand-blue/30" />
-          <div className="relative flex w-32 flex-col items-center gap-2 rounded-[2rem] bg-linear-to-br from-brand-blue to-[#0d4fc4] p-3 text-white shadow-[0_24px_50px_-12px_rgba(23,101,238,0.55)] sm:w-48 xl:w-52 xl:p-4 2xl:w-64">
+          <div className="hero-center-card relative flex w-32 flex-col items-center gap-2 rounded-[2rem] bg-linear-to-br from-brand-blue to-[#0d4fc4] p-3 text-white shadow-[0_24px_50px_-12px_rgba(23,101,238,0.55)] sm:w-48 2xl:w-64">
             <span className="flex w-full items-center justify-center rounded-2xl bg-white px-2 py-3 sm:px-3">
-              <Logo className="[&_img]:h-12 sm:[&_img]:h-14 xl:[&_img]:h-16 2xl:[&_img]:h-20" />
+              <Logo className="hero-center-logo [&_img]:h-12 sm:[&_img]:h-14 2xl:[&_img]:h-20" />
             </span>
             <span className="flex w-full flex-col gap-1">
               <span className="h-1.5 w-full rounded-full bg-white/30" />
@@ -128,7 +128,7 @@ export default function HeroScene() {
         {nodes.map((node, index) => (
           <div
             key={node.title}
-            className="hero-float absolute left-[clamp(4rem,var(--x),calc(100%-4rem))] top-(--y) sm:left-(--x) min-[1200px]:left-[clamp(4.5rem,var(--lx),calc(100%-4.5rem))] min-[1200px]:top-(--ly) motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2"
+            className="hero-float absolute left-[clamp(4rem,var(--x),calc(100%-4rem))] top-(--y) sm:left-[clamp(4rem,var(--x),calc(100%-4rem))] min-[1200px]:left-[clamp(4.5rem,var(--lx),calc(100%-4.5rem))] min-[1200px]:top-(--ly) motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2"
             style={{
               '--x': `${node.x}%`,
               '--y': `${node.y}%`,
@@ -137,8 +137,8 @@ export default function HeroScene() {
               '--hero-delay': `${index * -1.1}s`,
             } as CSSProperties}
           >
-            <div className="flex w-20 flex-col items-center rounded-2xl border border-white bg-white/95 px-1.5 pb-2 text-center shadow-[0_14px_34px_-14px_rgba(32,44,60,0.35)] sm:w-32 sm:px-2 sm:pb-3 xl:w-36">
-              <span className="-mt-5 mb-1 block h-14 w-16 drop-shadow-sm sm:-mt-6 sm:h-18 sm:w-24">
+            <div className="hero-node-card flex w-20 flex-col items-center rounded-2xl border border-white bg-white/95 px-1.5 pb-2 text-center shadow-[0_14px_34px_-14px_rgba(32,44,60,0.35)] sm:w-32 sm:px-2 sm:pb-3">
+              <span className="hero-node-artwork -mt-5 mb-1 block h-14 w-16 drop-shadow-sm sm:-mt-6 sm:h-18 sm:w-24">
                 <NodeArtwork node={node} />
               </span>
               <span className="block text-[10px] font-semibold leading-tight text-ink sm:text-xs xl:text-sm">{node.title}</span>

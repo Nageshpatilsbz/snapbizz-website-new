@@ -83,6 +83,17 @@ html[data-prerendered] header nav {
 .hero-pulse { animation: hero-pulse 2.6s ease-out infinite; }
 @media (prefers-reduced-motion: reduce) { .hero-float, .hero-flow, .hero-pulse { animation: none; } }
 
+@media (min-width: 1200px) and (max-width: 1535px) {
+  .hero-center-card { width: 14rem; padding: 1.25rem; }
+  .hero-center-logo img { height: 4.5rem; }
+  .hero-node-card { width: 10rem; }
+  .hero-node-artwork { width: 7rem; height: 5rem; }
+}
+
+@media (max-width: 1400px) {
+  .solution-product-image { height: clamp(10rem, 24vh, 14rem); }
+}
+
 button:not(:disabled), [role='button']:not([aria-disabled='true']) { cursor: pointer; }
 
 .btn-shine {
@@ -151,7 +162,7 @@ button:not(:disabled), [role='button']:not([aria-disabled='true']) { cursor: poi
 #solution-tabs { transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); transition-duration: 500ms; }
 html[data-nav='hidden'] #solution-tabs { top: 0; }
 
-@media (min-width: 1024px) and (max-height: 800px) {
+@media (min-width: 1401px) and (max-height: 800px) {
   .solution-product-card {
     min-height: 24rem;
     padding: 1.25rem;

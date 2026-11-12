@@ -6,7 +6,6 @@ import { Container } from '../ui/Container'
 import { SectionHeading } from '../ui/SectionHeading'
 import { SolutionFlow } from './SolutionFlow'
 import { SiteLink } from '../ui/SiteLink'
-import { solutionHref } from '../../lib/urls'
 
 const panelId = (id: string) => `solution-${id}`
 
@@ -165,7 +164,7 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
                       {solution.description}
                     </p>
                     {solution.image ? (
-                      <div className="solution-product-image relative my-4 flex h-36 items-center justify-center lg:h-[clamp(7rem,18vh,10rem)]">
+                      <div className="solution-product-image relative my-4 flex h-48 items-center justify-center lg:h-[clamp(7rem,18vh,10rem)]">
                         <div className={solution.secondaryImage ? 'grid h-full w-full max-w-sm grid-cols-[1fr_0.4fr] items-center gap-2' : 'contents'}>
                         {solution.platform?.startsWith('Web') ? (
                           <div className="flex max-h-full w-full max-w-[18rem] flex-col overflow-hidden rounded-xl border border-white/25 bg-slate-900 shadow-[0_16px_24px_-8px_rgba(0,0,0,0.4)] transition-transform duration-500 group-hover:scale-105">
@@ -209,17 +208,14 @@ export function Solutions({ solutionId }: { solutionId?: string }) {
                         </div>
                       </div>
                     ) : null}
-                    <SiteLink
-                      href="#contact"
-                      className="group relative mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-blue-dark transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                    >
-                      {solution.cta}
-                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                    </SiteLink>
-                    {!solutionId ? (
-                      <a href={solutionHref(solution.id)} className="relative mt-3 inline-flex w-fit items-center gap-2 text-sm font-semibold text-white underline underline-offset-4">
-                        Explore {solution.title} <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </a>
+                    {!solution.cta.startsWith('Explore') ? (
+                      <SiteLink
+                        href="#contact"
+                        className="group relative mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-brand-blue-dark transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                      >
+                        {solution.cta}
+                        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                      </SiteLink>
                     ) : null}
                   </div>
 
