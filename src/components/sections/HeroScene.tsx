@@ -89,7 +89,7 @@ function NodeArtwork({ node }: { node: EcosystemNode }) {
 
 export default function HeroScene() {
   return (
-    <div className="mx-auto w-full max-w-2xl lg:ml-auto lg:max-w-none lg:pl-12 xl:pl-20">
+    <div className="mx-auto w-full max-w-2xl min-[1200px]:ml-auto min-[1200px]:max-w-none min-[1200px]:pl-6 min-[1400px]:pl-20">
       <div
         role="img"
         aria-label="Connected SnapBizz ecosystem: Turbo Android POS and Neo Windows POS linked to bank and fintech partners, inventory, online orders, digital payments, and business analytics"
@@ -102,8 +102,8 @@ export default function HeroScene() {
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
           {nodes.map((node) => (
             <g key={node.title}>
-              <line x1="50" y1="50" x2={node.x} y2={node.y} stroke={node.color} strokeWidth="0.5" strokeLinecap="round" strokeDasharray="1.6 1.8" vectorEffect="non-scaling-stroke" className="hero-flow opacity-60 lg:hidden" />
-              <line x1="50" y1="50" x2={node.lx} y2={node.ly} stroke={node.color} strokeWidth="0.5" strokeLinecap="round" strokeDasharray="1.6 1.8" vectorEffect="non-scaling-stroke" className="hero-flow hidden opacity-60 lg:block" />
+              <line x1="50" y1="50" x2={node.x} y2={node.y} stroke={node.color} strokeWidth="0.5" strokeLinecap="round" strokeDasharray="1.6 1.8" vectorEffect="non-scaling-stroke" className="hero-flow opacity-60 min-[1200px]:hidden" />
+              <line x1="50" y1="50" x2={node.lx} y2={node.ly} stroke={node.color} strokeWidth="0.5" strokeLinecap="round" strokeDasharray="1.6 1.8" vectorEffect="non-scaling-stroke" className="hero-flow hidden opacity-60 min-[1200px]:block" />
             </g>
           ))}
         </svg>
@@ -128,7 +128,7 @@ export default function HeroScene() {
         {nodes.map((node, index) => (
           <div
             key={node.title}
-            className="hero-float absolute left-[clamp(2.5rem,var(--x),calc(100%-2.5rem))] top-(--y) sm:left-(--x) lg:left-(--lx) lg:top-(--ly) motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2"
+            className="hero-float absolute left-[clamp(4rem,var(--x),calc(100%-4rem))] top-(--y) sm:left-(--x) min-[1200px]:left-[clamp(4.5rem,var(--lx),calc(100%-4.5rem))] min-[1200px]:top-(--ly) motion-reduce:-translate-x-1/2 motion-reduce:-translate-y-1/2"
             style={{
               '--x': `${node.x}%`,
               '--y': `${node.y}%`,

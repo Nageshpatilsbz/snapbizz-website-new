@@ -25,6 +25,8 @@ const solutionTitles: Record<string, string> = {
 const companyDescriptions: Record<string, string> = {
   about: 'Learn how SnapBizz connects retail checkout, Android and Windows POS, banking partnerships, and enterprise payment workflows.',
   partners: 'Explore SnapBizz partnerships for banks, fintechs, device providers, distributors, and enterprise billing and payment integrations.',
+  brands: 'Connect FMCG brands with retailers and shoppers through digital merchandising, engagement, and point-of-sale insights.',
+  'retailer-testimonials': 'Watch retailer stories about using SnapBizz billing, store technology, and customer engagement tools.',
   faq: 'Find product answers for SnapBizz Turbo, SnapBizz Lite, SnapOrder, and connected retail workflows.',
   privacy: 'Read the SnapBizz Cloudtech Pvt. Ltd. website Privacy Policy, including information collection, usage, sharing, opt-out, and grievance contacts.',
   terms: 'Read the SnapBizz software license agreement and mobile service privacy terms, including licensing, restrictions, liability, and data handling.',

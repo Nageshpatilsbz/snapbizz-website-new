@@ -38,6 +38,22 @@ export const companyPages: CompanyPageContent[] = [
     ],
   },
   {
+    id: 'brands',
+    label: 'SnapBizz Brand Services',
+    title: 'SnapBizz Brand Services',
+    description: 'Connect FMCG brands with retailers and shoppers through digital merchandising, engagement, and actionable purchase insights.',
+    icon: Building2,
+    sections: [],
+  },
+  {
+    id: 'retailer-testimonials',
+    label: 'Retailer Testimonials',
+    title: 'Retailer Testimonials',
+    description: 'Hear how retailers use SnapBizz in their stores.',
+    icon: Users,
+    sections: [],
+  },
+  {
     id: 'careers',
     label: 'Careers',
     title: 'Help Shape Connected Commerce.',

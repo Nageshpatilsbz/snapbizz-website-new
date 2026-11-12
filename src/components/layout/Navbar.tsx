@@ -54,7 +54,7 @@ export function Navbar() {
     const closeOutside = (event: PointerEvent) => {
       if (event.target instanceof Node && !headerRef.current?.contains(event.target)) closeMenus()
     }
-    const desktop = window.matchMedia('(min-width: 1024px)')
+    const desktop = window.matchMedia('(min-width: 1200px)')
     const onBreakpoint = () => {
       if (desktop.matches) setIsMobileOpen(false)
       else setOpenDropdown(null)
@@ -96,14 +96,14 @@ export function Navbar() {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto flex h-18 w-full items-center justify-between px-4 py-3 sm:px-6 lg:px-8"
+        className="mx-auto flex h-18 w-full items-center justify-between px-4 py-3 sm:px-6 lg:px-8 min-[1200px]:px-4 min-[1400px]:px-8"
         aria-label="Primary"
       >
         <SiteLink href="#top" className="flex shrink-0 items-center" aria-label="SnapBizz home">
           <Logo className="[&_img]:h-13 sm:[&_img]:h-14" />
         </SiteLink>
 
-        <ul className="hidden items-center gap-0 xl:flex">
+        <ul className="hidden items-center gap-0 min-[1200px]:flex">
           {navItems.map((item) => (
             <li
               key={item.label}
@@ -121,7 +121,7 @@ export function Navbar() {
                   ref={(element) => { dropdownRefs.current[item.label] = element }}
                   type="button"
                   onClick={(event) => setOpenDropdown((open) => event.detail === 0 && open === item.label ? null : item.label)}
-                  className="flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue"
+                  className="flex items-center gap-1 rounded-full px-2 py-2 text-[13px] font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue min-[1400px]:px-3 min-[1400px]:text-sm"
                   aria-expanded={openDropdown === item.label}
                   aria-controls={openDropdown === item.label ? `nav-${item.label.toLowerCase()}` : undefined}
                 >
@@ -129,7 +129,7 @@ export function Navbar() {
                   <ChevronDown className={`h-3.5 w-3.5 transition-transform ${openDropdown === item.label ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
               ) : (
-                <SiteLink href={item.href} className="flex rounded-full px-3 py-2 text-sm font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue">
+                <SiteLink href={item.href} className="flex rounded-full px-2 py-2 text-[13px] font-medium text-ink-700 transition-colors hover:bg-surface-soft hover:text-brand-blue min-[1400px]:px-3 min-[1400px]:text-sm">
                   {item.label}
                 </SiteLink>
               )}
@@ -144,9 +144,11 @@ export function Navbar() {
                     transition={{ duration: 0.18 }}
                     className="absolute left-1/2 top-full max-h-[calc(100dvh-6rem)] w-80 -translate-x-1/2 overflow-y-auto overscroll-contain rounded-2xl border border-line bg-white p-2 shadow-card"
                   >
-                    <SiteLink href={item.href} onClick={() => setOpenDropdown(null)} className="mb-1 block rounded-xl bg-brand-blue-light px-3 py-3 text-sm font-semibold text-brand-blue-dark hover:bg-brand-blue/15">
-                      {item.label === 'Company' ? 'About SnapBizz' : `Explore All ${item.label}`}
-                    </SiteLink>
+                    {item.label !== 'Resources' ? (
+                      <SiteLink href={item.href} onClick={() => setOpenDropdown(null)} className="mb-1 block rounded-xl bg-brand-blue-light px-3 py-3 text-sm font-semibold text-brand-blue-dark hover:bg-brand-blue/15">
+                        {item.label === 'Company' ? 'About SnapBizz' : `Explore All ${item.label}`}
+                      </SiteLink>
+                    ) : null}
                     {item.items.map((dropdownItem) => (
                       <SiteLink
                         key={dropdownItem.label}
@@ -168,7 +170,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden xl:block">
+        <div className="hidden min-[1200px]:block">
           <Button href="#contact" variant="primary">
             Request a Demo
           </Button>
@@ -177,7 +179,7 @@ export function Navbar() {
         <button
           ref={mobileButtonRef}
           type="button"
-          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 text-ink xl:hidden"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full p-2 text-ink min-[1200px]:hidden"
           onClick={() => setIsMobileOpen((open) => !open)}
           aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMobileOpen}
@@ -195,7 +197,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-line bg-white xl:hidden"
+            className="overflow-hidden border-t border-line bg-white min-[1200px]:hidden"
           >
             <div className="flex max-h-[calc(100dvh-4.5rem)] flex-col gap-1 overflow-y-auto overscroll-contain px-6 py-4">
               {navItems.map((item) => (
@@ -206,9 +208,11 @@ export function Navbar() {
                       <ChevronDown className="h-4 w-4 transition-transform group-open:rotate-180" aria-hidden="true" />
                     </summary>
                     <div className="mb-2 ml-3 flex flex-col gap-0.5 border-l border-line pl-3">
-                      <SiteLink href={item.href} onClick={() => setIsMobileOpen(false)} className="rounded-lg px-3 py-2 text-sm font-semibold text-brand-blue-dark hover:bg-surface-soft">
-                        {item.label === 'Company' ? 'About SnapBizz' : `Explore All ${item.label}`}
-                      </SiteLink>
+                      {item.label !== 'Resources' ? (
+                        <SiteLink href={item.href} onClick={() => setIsMobileOpen(false)} className="rounded-lg px-3 py-2 text-sm font-semibold text-brand-blue-dark hover:bg-surface-soft">
+                          {item.label === 'Company' ? 'About SnapBizz' : `Explore All ${item.label}`}
+                        </SiteLink>
+                      ) : null}
                       {item.items.map((dropdownItem) => (
                         <SiteLink
                           key={dropdownItem.label}

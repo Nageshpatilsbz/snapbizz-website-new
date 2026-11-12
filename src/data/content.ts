@@ -3,10 +3,13 @@ import {
   Building2,
   Car,
   Database,
+  BookOpen,
+  HelpCircle,
   Landmark,
   Layers,
   LayoutDashboard,
   Globe2,
+  Newspaper,
   Receipt,
   ReceiptText,
   ShieldCheck,
@@ -116,7 +119,7 @@ export const navItems: NavItem[] = [
     label: 'Company',
     href: companyPageHref('about'),
     items: [
-      ...companyPages.filter((page) => !page.legal && page.id !== 'about' && page.id !== 'faq').map((page) => ({
+      ...companyPages.filter((page) => !page.legal && page.id !== 'about' && page.id !== 'faq' && page.id !== 'brands').map((page) => ({
         label: page.label,
         description: page.description,
         href: companyPageHref(page.id),
@@ -125,13 +128,20 @@ export const navItems: NavItem[] = [
       { label: 'Snapbizz Data Suite', description: 'FMCG consumer transaction insights from POS data across India.', href: pageHref('data/'), icon: Database },
       { label: 'How It Works', description: 'From understanding your workflow to rollout and support.', href: '#how-it-works', icon: Layers },
       { label: 'Why SnapBizz', description: 'Flexible workflows, integrations, and merchant support.', href: '#why-us', icon: ShieldCheck },
+      { label: 'Distributors', description: 'Explore a distribution partnership with SnapBizz.', href: pageHref('distributors/'), icon: Building2 },
     ],
   },
-  { label: 'News', href: pageHref('news/') },
-  { label: 'Distributors', href: pageHref('distributors/') },
-  { label: 'Blog', href: pageHref('blog/') },
-  { label: 'Tutorials', href: pageHref('tutorials/') },
-  { label: 'FAQs', href: companyPageHref('faq') },
+  { label: 'Brands', href: companyPageHref('brands') },
+  {
+    label: 'Resources',
+    href: pageHref('blog/'),
+    items: [
+      { label: 'News', description: 'Updates and press from SnapBizz.', href: pageHref('news/'), icon: Newspaper },
+      { label: 'Blog', description: 'Retail insights and SnapPulse data.', href: pageHref('blog/'), icon: ReceiptText },
+      { label: 'Tutorials', description: 'Product how-to videos and training.', href: pageHref('tutorials/'), icon: BookOpen },
+      { label: 'FAQs', description: 'Answers about SnapBizz products and services.', href: companyPageHref('faq'), icon: HelpCircle },
+    ],
+  },
   { label: 'Contact', href: '#contact' },
 ]
 

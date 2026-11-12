@@ -12,7 +12,7 @@ const offerings = [
 export function Hero() {
   return (
     <section id="top" className="brand-wash relative isolate flex items-center overflow-hidden bg-surface pb-10 pt-24 sm:pb-20 sm:pt-32 lg:min-h-screen">
-      <div className="mx-auto grid w-full max-w-[1680px] items-center gap-6 px-4 sm:gap-10 sm:px-6 lg:grid-cols-[0.85fr_1.35fr] lg:gap-6 lg:px-10 xl:px-16">
+      <div className="mx-auto grid w-full max-w-[1680px] items-center gap-6 px-4 sm:gap-10 sm:px-6 min-[1200px]:grid-cols-[0.85fr_1.35fr] min-[1200px]:gap-6 min-[1200px]:px-10 min-[1400px]:px-16">
         <motion.div
           initial={{ y: 16 }}
           animate={{ y: 0 }}

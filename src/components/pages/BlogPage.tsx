@@ -94,6 +94,7 @@ export function BlogPage() {
           ) : null}
         </Container>
       </section>
+
     </>
   )
 }

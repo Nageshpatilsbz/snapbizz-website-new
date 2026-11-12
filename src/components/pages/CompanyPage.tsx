@@ -8,6 +8,52 @@ import { TermsAndConditions } from './TermsAndConditions'
 import { ProductFaqLibrary } from './ProductFaqLibrary'
 import { SiteLink } from '../ui/SiteLink'
 
+const retailerTestimonials = [
+  {
+    title: 'Meet Gargiben from Ahmedabad',
+    description: 'Gargiben is 69 years old and comfortably uses the SnapBizz billing machine.',
+    videoId: 'S_ILtD2HqHw',
+  },
+  {
+    title: 'Mr. Lala increases his store profits',
+    description: 'Lala Ram uses SnapVision to display products and increase sales.',
+    videoId: 'iLq_RTrYeZ0',
+  },
+  {
+    title: 'Meet Anuradha from Telangana',
+    description: 'Anuradha had never used a gadget before and quickly embraced the SnapBizz billing machine.',
+    videoId: 'Matc0uzN0i0',
+  },
+  {
+    title: 'Be like Imran Bhai and Ramu Kaka',
+    description: 'Ramu Kaka transformed his grocery store into a smart store and increased profits.',
+    videoId: '73zd5VS7bcA',
+  },
+  {
+    title: 'Swastik Dry Fruits store goes hi-tech',
+    description: 'Owner Mr. Manish uses SnapBizz to run store operations with ease.',
+    videoId: 'nn4QpzyoGOs',
+  },
+]
+
+const brandServices = [
+  {
+    title: 'Use analytics to track brand performances and make impactful decisions',
+    description: 'Use point-of-sale purchase insights to understand shopper behavior and measure promotions.',
+    videoId: '2oQNhf2pUQ0',
+  },
+  {
+    title: 'Make your products stand out at the stores',
+    description: 'Highlight products and promotions through digital merchandising at the point of sale.',
+    videoId: '_AYGo2V84uE',
+  },
+  {
+    title: 'Engage your customers contextually both in and out of the store',
+    description: 'Reach shoppers through in-store displays, SMS, and contextual messaging on printed bills.',
+    videoId: 'T-iLhCjSVjg',
+  },
+]
+
 export function CompanyPage({ id }: { id: string }) {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const page = companyPages.find((item) => item.id === id)
@@ -53,7 +99,51 @@ export function CompanyPage({ id }: { id: string }) {
       <section className="brand-wash bg-surface-soft py-10 sm:py-20">
         <Container className="grid gap-6 sm:gap-10 lg:grid-cols-[1fr_17rem] lg:items-start">
           <div className="min-w-0 space-y-5">
-            {page.id === 'privacy' ? <PrivacyPolicy /> : page.id === 'terms' ? <TermsAndConditions /> : page.sections.map((section) => page.id === 'faq' ? (
+            {page.id === 'brands' ? (
+              <div className="grid gap-6 sm:grid-cols-2">
+                {brandServices.map((service) => (
+                  <article key={service.videoId} className="min-w-0 overflow-hidden rounded-lg border border-line bg-white">
+                    <div className="relative w-full bg-ink" style={{ aspectRatio: '16 / 9' }}>
+                      <iframe
+                        className="absolute inset-0 h-full w-full border-0"
+                        src={`https://www.youtube-nocookie.com/embed/${service.videoId}`}
+                        title={service.title}
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                    <div className="p-5">
+                      <h2 className="text-lg font-semibold leading-snug text-ink">{service.title}</h2>
+                      <p className="mt-2 text-sm leading-6 text-ink-500">{service.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : page.id === 'retailer-testimonials' ? (
+              <div className="grid gap-6 sm:grid-cols-2">
+                {retailerTestimonials.map((testimonial) => (
+                  <article key={testimonial.videoId} className="min-w-0 overflow-hidden rounded-lg border border-line bg-white">
+                    <div className="relative w-full bg-ink" style={{ aspectRatio: '16 / 9' }}>
+                      <iframe
+                        className="absolute inset-0 h-full w-full border-0"
+                        src={`https://www.youtube-nocookie.com/embed/${testimonial.videoId}`}
+                        title={testimonial.title}
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                    <div className="p-5">
+                      <h2 className="text-lg font-semibold leading-snug text-ink">{testimonial.title}</h2>
+                      <p className="mt-2 text-sm leading-6 text-ink-500">{testimonial.description}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : page.id === 'privacy' ? <PrivacyPolicy /> : page.id === 'terms' ? <TermsAndConditions /> : page.sections.map((section) => page.id === 'faq' ? (
               <details key={section.title} className="group rounded-2xl border border-line bg-white p-6 shadow-sm">
                 <summary className="cursor-pointer text-base font-semibold text-ink marker:text-brand-blue">{section.title}</summary>
                 <p className="mt-4 text-sm leading-relaxed">{section.body}</p>
